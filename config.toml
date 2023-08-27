@@ -1,5 +1,7 @@
 # The URL the site will be built for
 base_url = "https://mukund-yedunuthala.de"
+title = "Venkata Mukund Kashyap Yedunuthala"
+theme = "tabi"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -10,7 +12,25 @@ build_search_index = false
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = false
+external_links_target_blank = true
+highlight_code = true
+highlight_theme = "css"
 
 [extra]
 # Put all your custom variables here
+remote_repository_url = "https://gitlab.com/mukund-yedunuthala/portfolio-zola-tabi"
+remote_repository_branch = "master"
+favicon_emoji = "⚛️"
+menu = [
+    { name = "about", url = "about", trailing_slash = true },
+    { name = "projects", url = "projects", trailing_slash = true },
+    { name = "impressum", url = "impressum", trailing_slash = true },
+]
+email="bXVrdW5kLnllZHVudXRoYWxhQG91dGxvb2suZGU="
+socials = [
+    { name = "GitHub", url = "https://github.com/mukund-yedunuthala/", icon = "github" },
+    { name = "Gitlab", url = "https://gitlab.com/mukund-yedunuthala/", icon = "gitlab" },
+    { name = "Firefish", url = "https://firefish.social/@mukskashyap", icon = "firefish" },
+
+]
+copyright = "© $CURRENT_YEAR Venkata Mukund Kashyap Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license."
