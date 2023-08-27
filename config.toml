@@ -1,7 +1,7 @@
 # The URL the site will be built for
+theme = "tabi"
 base_url = "https://mukund-yedunuthala.de"
 title = "Venkata Mukund Kashyap Yedunuthala"
-theme = "tabi"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
