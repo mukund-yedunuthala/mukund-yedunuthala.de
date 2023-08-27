@@ -1,5 +1,15 @@
 # Changelog
 
+### [v0.1.1](https://gitlab.com/mukund-yedunuthala/portfolio-zola-tabi/compare/v0.1.0...v0.1.1) (2023-08-27)
+
+#### Fixes
+
+* **CI/CD:** fixes base_url issue, live at
+[mukund-yedunuthala.de](mukund-yedunuthala.de)
+([35aa30a](https://gitlab.com/mukund-yedunuthala/portfolio-zola-tabi/commit/35aa30a826f3b832575e8fa973b853731d41ebe3))
+* **CI/CD:** try to fix CI/CD
+([00fa842](https://gitlab.com/mukund-yedunuthala/portfolio-zola-tabi/commit/00fa842f5889c659a03acd41bc1b81f2c16b48b2))
+
 ## v0.1.0 (2023-08-27)
 
 ### Features
