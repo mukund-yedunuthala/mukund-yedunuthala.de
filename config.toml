@@ -31,6 +31,7 @@ socials = [
     { name = "GitHub", url = "https://github.com/mukund-yedunuthala/", icon = "github" },
     { name = "Gitlab", url = "https://gitlab.com/mukund-yedunuthala/", icon = "gitlab" },
     { name = "Firefish", url = "https://firefish.social/@mukskashyap", icon = "firefish" },
+    { name = "Pixelfed", url = "https://pixelfed.social/@mukskashyap", icon = "pixelfed" },
 
 ]
 copyright = "© $CURRENT_YEAR Venkata Mukund Kashyap Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license."
