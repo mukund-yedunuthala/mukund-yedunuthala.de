@@ -26,6 +26,14 @@ menu = [
     { name = "projects", url = "projects", trailing_slash = true },
     { name = "impressum", url = "impressum", trailing_slash = true },
 ]
+allowed_domains = [
+    { directive = "font-src", domains = ["'self'", "data:"] },
+    { directive = "img-src", domains = ["'self'", "https://*", "data:"] },
+    { directive = "script-src", domains = ["'self'"] },
+    { directive = "style-src", domains = ["'self'"] },
+    { directive = "frame-src", domains = ["https://www.youtube-nocookie.com"] },
+]
+hsts = "max-age=31536000; includeSubDomains; preload"
 email="bXVrdW5kLnllZHVudXRoYWxhQG91dGxvb2suZGU="
 socials = [
     { name = "GitHub", url = "https://github.com/mukund-yedunuthala/", icon = "github" },
