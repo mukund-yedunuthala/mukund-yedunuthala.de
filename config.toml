@@ -2,10 +2,9 @@
 theme = "tabi"
 base_url = "https://mukund-yedunuthala.de"
 title = "Venkata Mukund Kashyap Yedunuthala"
-
-# Whether to automatically compile all Sass files in the sass directory
+description = "A portfolio site that contains all the information about Venkata Mukund Kashyap Yedunuthala."
 compile_sass = true
-
+minify_html = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
 
@@ -21,19 +20,25 @@ highlight_theme = "css"
 remote_repository_url = "https://gitlab.com/mukund-yedunuthala/portfolio-zola-tabi"
 remote_repository_branch = "master"
 favicon_emoji = "⚛️"
+show_reading_time = false
+headerImage = "img/me.jpg"
+
 menu = [
     { name = "about", url = "about", trailing_slash = true },
     { name = "projects", url = "projects", trailing_slash = true },
     { name = "impressum", url = "impressum", trailing_slash = true },
 ]
 allowed_domains = [
+    { directive = "frame-ancestors", domains = ["'self'"] }, 
+    { directive = "base-uri", domains = ["'none'", "'self'"] },
+    { directive = "form-action", domains = ["'none'", "'self'"] },
     { directive = "font-src", domains = ["'self'", "data:"] },
     { directive = "img-src", domains = ["'self'", "https://*", "data:"] },
     { directive = "script-src", domains = ["'self'"] },
     { directive = "style-src", domains = ["'self'"] },
     { directive = "frame-src", domains = ["https://www.youtube-nocookie.com"] },
 ]
-hsts = "max-age=31536000; includeSubDomains; preload"
+
 email="bXVrdW5kLnllZHVudXRoYWxhQG91dGxvb2suZGU="
 socials = [
     { name = "GitHub", url = "https://github.com/mukund-yedunuthala/", icon = "github" },
