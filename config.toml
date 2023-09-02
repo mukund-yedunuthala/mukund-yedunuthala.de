@@ -7,7 +7,6 @@ compile_sass = true
 minify_html = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
-
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
@@ -21,12 +20,12 @@ remote_repository_url = "https://gitlab.com/mukund-yedunuthala/portfolio-zola-ta
 remote_repository_branch = "master"
 favicon_emoji = "⚛️"
 show_reading_time = false
-headerImage = "img/me.jpg"
+headerImage = "img/me.png"
+skin = "indigo_ingot"
 
 menu = [
     { name = "about", url = "about", trailing_slash = true },
     { name = "projects", url = "projects", trailing_slash = true },
-    { name = "impressum", url = "impressum", trailing_slash = true },
 ]
 allowed_domains = [
     { directive = "frame-ancestors", domains = ["'self'"] }, 
