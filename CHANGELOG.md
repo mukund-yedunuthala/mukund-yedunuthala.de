@@ -1,5 +1,12 @@
 # Changelog
 
+### [v0.1.2](https://gitlab.com/mukund-yedunuthala/portfolio-zola-tabi/compare/v0.1.1...v0.1.2) (2023-09-02)
+
+#### Features
+
+* **meta:** update header image, app page, new skin, pdfs
+([48ae205](https://gitlab.com/mukund-yedunuthala/portfolio-zola-tabi/commit/48ae205f43229fc1c7bd13061f97f1fc6e71170b))
+
 ### [v0.1.1](https://gitlab.com/mukund-yedunuthala/portfolio-zola-tabi/compare/v0.1.0...v0.1.1) (2023-08-27)
 
 #### Fixes
