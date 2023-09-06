@@ -4,7 +4,7 @@ description = "(WIP) Books companion is an Android application to track books, e
 weight = 3
 
 [extra]
-local_image = "img/bc-thumbnail.jpg"
+local_image = "img/bc-thumbnail.png"
 link_to = "https://github.com/mukund-yedunuthala/BooksCompanionApp" 
 +++
 |                  |                  |

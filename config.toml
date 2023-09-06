@@ -20,8 +20,8 @@ remote_repository_url = "https://gitlab.com/mukund-yedunuthala/portfolio-zola-ta
 remote_repository_branch = "master"
 favicon_emoji = "⚛️"
 show_reading_time = false
-headerImage = "img/me.png"
-skin = "indigo_ingot"
+headerImage = "img/me.jpg"
+skin = "lavender"
 
 menu = [
     { name = "about", url = "about", trailing_slash = true },
