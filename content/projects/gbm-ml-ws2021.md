@@ -6,8 +6,7 @@ weight = 3
 [extra]
 local_image = "img/proj_pppws21_tn.png"
 +++
-
-#### Repository: [https://gitlab.com/mukund-yedunuthala/ppp-ws21-22](https://gitlab.com/mukund-yedunuthala/ppp-ws21-22)
+#### Repository: [git/gbm-local-regression](https://git.mukund-yedunuthala.de/mukund-yedunuthala/gbm-local-regression)
 #### Documentation: [https://mukund-yedunuthala.gitlab.io/ppp-ws21-22/](https://mukund-yedunuthala.gitlab.io/ppp-ws21-22/)
 
 ## Summary

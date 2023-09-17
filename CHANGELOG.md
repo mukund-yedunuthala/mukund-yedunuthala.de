@@ -17,9 +17,9 @@
 * **CI/CD:** try to fix CI/CD
 ([00fa842](https://gitlab.com/mukund-yedunuthala/portfolio-zola-tabi/commit/00fa842f5889c659a03acd41bc1b81f2c16b48b2))
 
-## v0.1.0 (2023-08-27)
+### v0.1.0 (2023-08-27)
 
-### Features
+#### Features
 
 * populate about and projects
 ([018c93b](https://gitlab.com/mukund-yedunuthala/portfolio-zola-tabi/commit/018c93b14889ff4b76d4320f9fc85bc19a3bd276))

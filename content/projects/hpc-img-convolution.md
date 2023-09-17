@@ -6,7 +6,7 @@ weight = 2
 [extra]
 local_image = "img/proj_mpi_tn.png"
 +++
-#### Repository: [https://gitlab.com/mukund-yedunuthala/hpc-img-convolution](https://gitlab.com/mukund-yedunuthala/hpc-img-convolution)
+#### Repository: [git/hpc-img-convolution](https://git.mukund-yedunuthala.de/mukund-yedunuthala/hpc-img-convolution)
 #### Documentation: [https://mukund-yedunuthala.gitlab.io/hpc-img-convolution/](https://mukund-yedunuthala.gitlab.io/hpc-img-convolution/)
 
 Introduction

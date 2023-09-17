@@ -7,7 +7,7 @@ weight = 2
 local_image = "img/proj_pppss22_tn.png"
 +++
 
-#### Repository: [https://gitlab.com/mukund-yedunuthala/ppp-ss2022](https://gitlab.com/mukund-yedunuthala/ppp-ss2022)
+#### Repository: [git/radiative-heat-fem](https://git.mukund-yedunuthala.de/mukund-yedunuthala/radiative-heat-fem)
 #### Documentation: [https://mukund-yedunuthala.gitlab.io/ppp-ss2022/](https://mukund-yedunuthala.gitlab.io/ppp-ss2022/)
 
 ## Summary

@@ -5,7 +5,7 @@ weight = 3
 
 [extra]
 local_image = "img/bc-thumbnail.png"
-link_to = "https://github.com/mukund-yedunuthala/BooksCompanionApp" 
+link_to = "https://git.mukund-yedunuthala.de/mukund-yedunuthala/BooksCompanionApp" 
 +++
 |                  |                  |
 | ---------------- | ---------------- |
