@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.2.0](https://git.mukund-yedunuthala.de/mukund-yedunuthala/portfolio-zola-tabi/compare/v0.1.3...v0.2.0) (2023-10-16)
+
+### Features
+
+* **languages:** (WIP) add DE language support
+([e555caf](https://git.mukund-yedunuthala.de/mukund-yedunuthala/portfolio-zola-tabi/commit/e555cafc8cb6ba136c63172070d57d5ce77dc85b)),
+closes
+[#2](https://git.mukund-yedunuthala.de/mukund-yedunuthala/portfolio-zola-tabi/issues/2)
+* **footer:** add footer menu for impressum
+([8da4b19](https://git.mukund-yedunuthala.de/mukund-yedunuthala/portfolio-zola-tabi/commit/8da4b1966d0912207453704be194449e0165b5f3))
+
 ### [v0.1.3](https://git.mukund-yedunuthala.de/mukund-yedunuthala/portfolio-zola-tabi/compare/v0.1.2...v0.1.3) (2023-09-17)
 
 #### Features
