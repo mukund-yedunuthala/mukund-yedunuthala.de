@@ -1,6 +1,6 @@
 +++
 title = "Books Companion"
-description = "(WIP) Books companion is a simple Android app to effortlessly record and manage your read and to-be-read books, making it a breeze to stay organized and discover your next literary adventure. It is primarily intended to be a hobby project."
+description = "(WIP) Books companion ist eine unkomplizierte Android-App, mit der Sie einfach Ihre gelesenen und noch zu lesenden Bücher erfassen und verwalten können. So bleibt es leicht, organisiert zu bleiben. Die App ist primär als Hobbyprojekt gedacht."
 weight = 3
 
 [extra]

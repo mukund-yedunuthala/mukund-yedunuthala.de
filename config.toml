@@ -5,6 +5,7 @@ title = "Venkata Mukund Kashyap Yedunuthala"
 description = "A portfolio site that contains all the information about Venkata Mukund Kashyap Yedunuthala."
 compile_sass = true
 minify_html = true
+default_language = "en"
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
@@ -24,8 +25,10 @@ title = "Venkata Mukund Kashyap Yedunuthala"
 description = "Portfolio Webseite"
 
 
-[extra]
 
+[extra]
+language_name.en = "English"
+language_name.de = "Deutsch"
 base_canonical_url = "https://mukund-yedunuthala.de"
 social_media_card = "img/me.jpg"
 
@@ -52,11 +55,12 @@ long_date_format = "%d %B %Y"
 invert_title_order = true
 
 menu = [
-    { name = "about", url = "about", trailing_slash = true },
-    { name = "projects", url = "projects", trailing_slash = true },
+    { name = "About", url = "about", trailing_slash = true },
+    { name = "Projects", url = "projects", trailing_slash = true },
 ]
 footer_menu = [
-    {url = "impressum", name = "Impressum", trailing_slash = true},
+    {url = "imprint", name = "Imprint", trailing_slash = true},
+    {url = "privacy-policy", name = "Privacy policy", trailing_slash = true},
     {url = "sitemap.xml", name = "Sitemap", trailing_slash = false},
 ]
 allowed_domains = [
@@ -76,4 +80,5 @@ socials = [
     { name = "Pixelfed", url = "https://pixelfed.social/@mukskashyap", icon = "pixelfed" },
 
 ]
-copyright = "© $CURRENT_YEAR Venkata Mukund Kashyap Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license."
+copyright = "Copyright © $CURRENT_YEAR Venkata Mukund Kashyap Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license."
+translate_copyright = true

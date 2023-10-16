@@ -1,15 +1,15 @@
 +++
 title = "Gradient Boosting Machine with Local Regression weak learner"
-description = "Demonstrative project to construct a locally weighted regression based gradient boosting machine to predict material properties."
+description = "Demonstrationsprojekt zur Konstruktion einer Gradient-Boosting-Maschine auf Basis der lokalen Regression für die Vorhersage von Materialeigenschaften."
 weight = 3
 
 [extra]
 local_image = "img/proj_pppws21_tn.png"
 +++
-#### Repository: [git/gbm-local-regression](https://git.mukund-yedunuthala.de/mukund-yedunuthala/gbm-local-regression)
-#### Documentation: [https://mukund-yedunuthala.gitlab.io/ppp-ws21-22/](https://mukund-yedunuthala.gitlab.io/ppp-ws21-22/)
+#### Git-Repository: [git/gbm-local-regression](https://git.mukund-yedunuthala.de/mukund-yedunuthala/gbm-local-regression)
+#### Dokumentation: [https://mukund-yedunuthala.gitlab.io/ppp-ws21-22/](https://mukund-yedunuthala.gitlab.io/ppp-ws21-22/)
 
-## Summary
+## Überblick
 The potential of applying statistical learning in materials science is in moving away from the Edisonian approach, avoiding tedious trial-and-error discovery. Data-driven paradigms in materials science enable one to develop efficient, effective methods for generating, managing and utilizing relevant information.
 
 
