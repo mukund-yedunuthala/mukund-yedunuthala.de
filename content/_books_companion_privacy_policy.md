@@ -1,6 +1,10 @@
 +++
-title="Books Companion Privacy Policy"
-template="page.html"
+title = "Books Companion"
+description = "Android app privacy policy"
+template = "info-page.html"
+path = "books-companion-privacy-policy"
+render = false
+insert_anchor_links = "left"
 date="2023-08-27"
 +++
 

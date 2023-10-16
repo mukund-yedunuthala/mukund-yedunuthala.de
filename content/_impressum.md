@@ -1,6 +1,9 @@
 +++
-title="Impressum"
-template="page.html"
+title = "Impressum"
+template = "info-page.html"
+path = "impressum"
+render = false
+insert_anchor_links = "left"
 date="2023-08-27"
 +++
 

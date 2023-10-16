@@ -1,7 +1,10 @@
 +++
-title="About me"
-template="page.html"
-date="2023-08-27"
+title = "About"
+template = "info-page.html"
+path = "about"
+render = false
+insert_anchor_links = "left"
+date = "2023-10-16"
 +++
 
 I am currently pursuing a Master's degree in Computational Materials Science at the TU Bergakademie Freiberg in Freiberg, Germany. Originally from Hyderabad, Telangana, India, I have been residing in Germany since 2019. I have a strong command of both German and English, allowing me to effectively communicate in bilingual settings.
