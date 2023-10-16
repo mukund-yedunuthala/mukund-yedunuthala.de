@@ -5,38 +5,68 @@ title = "Venkata Mukund Kashyap Yedunuthala"
 description = "A portfolio site that contains all the information about Venkata Mukund Kashyap Yedunuthala."
 compile_sass = true
 minify_html = true
+
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
+
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-external_links_target_blank = true
 highlight_code = true
 highlight_theme = "css"
+smart_punctuation = true
+
+[link_checker]
+internal_level = "warn"
+
+[languages.de]
+title = "Venkata Mukund Kashyap Yedunuthala"
+description = "Portfolio Webseite"
+
 
 [extra]
-# Put all your custom variables here
-remote_repository_url = "https://gitlab.com/mukund-yedunuthala/portfolio-zola-tabi"
-remote_repository_branch = "master"
-favicon_emoji = "⚛️"
-show_reading_time = false
-headerImage = "img/me.jpg"
+
+base_canonical_url = "https://mukund-yedunuthala.de"
+social_media_card = "img/me.jpg"
+
+theme_switcher = true
+default_theme = "dark"
 skin = "lavender"
+favicon_emoji = "⚛️"
+headerImage = "img/me.jpg"
+
+
+remote_repository_url = "https://git.mukund-yedunuthala.de/mukund-yedunuthala/portfolio-zola-tabi"
+remote_repository_git_platform = "auto"
+remote_repository_branch = "master"
+show_remote_changes = true
+show_remote_source = true
+
+copy_button = true
+show_reading_time = false
+footnote_backlinks = false
+katex = false
+quick_navigation_buttons = true
+toc = false
+long_date_format = "%d %B %Y"
+invert_title_order = true
 
 menu = [
     { name = "about", url = "about", trailing_slash = true },
     { name = "projects", url = "projects", trailing_slash = true },
 ]
+footer_menu = [
+    {url = "impressum", name = "Impressum", trailing_slash = true},
+    {url = "sitemap.xml", name = "Sitemap", trailing_slash = false},
+]
 allowed_domains = [
-    { directive = "frame-ancestors", domains = ["'self'"] }, 
-    { directive = "base-uri", domains = ["'none'", "'self'"] },
-    { directive = "form-action", domains = ["'none'", "'self'"] },
     { directive = "font-src", domains = ["'self'", "data:"] },
     { directive = "img-src", domains = ["'self'", "https://*", "data:"] },
     { directive = "script-src", domains = ["'self'"] },
     { directive = "style-src", domains = ["'self'"] },
-    { directive = "frame-src", domains = ["https://www.youtube-nocookie.com"] },
+    { directive = "frame-src", domains = ["player.vimeo.com", "https://www.youtube-nocookie.com"] },
 ]
+
 
 email="bXVrdW5kLnllZHVudXRoYWxhQG91dGxvb2suZGU="
 socials = [
