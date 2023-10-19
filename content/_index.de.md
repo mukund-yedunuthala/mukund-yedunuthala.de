@@ -3,7 +3,7 @@ title = "Projects"
 sort_by = "date"
 template = "section.html"
 [extra]
-header = { title = "Herzlich Wilkommen!", img = "$BASE_URL/img/me.jpg", img_alt = "Mukund Yedunuthala" }
+header = { title = "Willkommen auf meiner Website!", img = "$BASE_URL/img/me.jpg", img_alt = "Mukund Yedunuthala" }
 section_path = "projects/_index.de.md"
 max_posts = 4
 +++

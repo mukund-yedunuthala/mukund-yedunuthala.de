@@ -14,7 +14,7 @@ language_selection = "Sprachauswahl"
 toggle_mode = "Zum $MODE Modus wechseln"  # $MODE will be replaced by a value (or both) below.
 dark = "dunklen"
 light = "hellen"
-
+read_more = "Weiterlesen"
 
 # Copy code block button.
 copied = "Kopiert!"
