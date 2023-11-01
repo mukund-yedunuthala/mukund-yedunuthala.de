@@ -76,7 +76,7 @@ email="bXVrdW5kLnllZHVudXRoYWxhQG91dGxvb2suZGU="
 socials = [
     { name = "Gitlab", url = "https://gitlab.com/mukund-yedunuthala/", icon = "gitlab" },
     { name = "Forgejo", url = "https://git.mukund-yedunuthala.de/mukund-yedunuthala/", icon = "forgejo"},
-    { name = "Firefish", url = "https://firefish.social/@mukskashyap", icon = "firefish" },
+    { name = "Firefish", url = "https://fedia.social/@mukskashyap", icon = "firefish" },
     { name = "Pixelfed", url = "https://pixelfed.social/@mukskashyap", icon = "pixelfed" },
 
 ]
