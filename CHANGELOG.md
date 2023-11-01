@@ -1,5 +1,17 @@
 # Changelog
 
+### [v0.2.1](https://git.mukund-yedunuthala.de/mukund-yedunuthala/portfolio-zola-tabi/compare/v0.2.0...v0.2.1) (2023-11-01)
+
+#### Fixes
+
+* **translations:** update footer links, cv, add app privacy policy
+translations
+([0ca43cb](https://git.mukund-yedunuthala.de/mukund-yedunuthala/portfolio-zola-tabi/commit/0ca43cb6f3a388adff467731bcd2da52aa258d7f)),
+closes
+[#2](https://git.mukund-yedunuthala.de/mukund-yedunuthala/portfolio-zola-tabi/issues/2)
+* **translations:** fix DE strings
+([2882b8d](https://git.mukund-yedunuthala.de/mukund-yedunuthala/portfolio-zola-tabi/commit/2882b8df9ddf0458cbd47c57d654d56f1b08cc24))
+
 ## [v0.2.0](https://git.mukund-yedunuthala.de/mukund-yedunuthala/portfolio-zola-tabi/compare/v0.1.3...v0.2.0) (2023-10-16)
 
 ### Features
