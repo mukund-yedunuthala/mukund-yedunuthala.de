@@ -17,5 +17,5 @@ The submodules are licensed under the following licenses:
 The following social icons as sourced from the respective projects:
 
 - [Pixelfed](https://pixelfed.org) under [GNU AGPLv3](https://github.com/pixelfed/pixelfed/blob/dev/LICENSE). 
-- [Firefish](https://joinfirefish.org) under [GNU AGPLv3](https://git.joinfirefish.org/firefish/firefish/-/blob/develop/COPYING).
+- [Iceshrimp](https://iceshrimp.dev/iceshrimp) under [GNU AGPLv3](https://iceshrimp.dev/iceshrimp/iceshrimp/src/branch/dev/LICENSE).
 - [Forgejo](https://forgejo.org) under [License](https://codeberg.org/forgejo/forgejo/src/branch/forgejo/LICENSE).

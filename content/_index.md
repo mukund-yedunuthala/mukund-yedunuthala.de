@@ -3,7 +3,7 @@ title = "Projects"
 sort_by = "date"
 template = "section.html"
 [extra]
-header = { title = "Hello! I'm Mukund!", img = "$BASE_URL/img/me.jpg", img_alt = "Mukund Yedunuthala" }
+header = { title = "Hello! I'm Mukund!", img = "img/me.jpg", img_alt = "Mukund Yedunuthala" }
 section_path = "projects/_index.md"
 max_posts = 4
 +++

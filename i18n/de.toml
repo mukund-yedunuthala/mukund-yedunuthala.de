@@ -25,6 +25,3 @@ copy_code_to_clipboard = "Code in die Zwischenablage kopieren"
 powered_by = "Erstellt mit"
 and = "und"
 site_source = "Quellcode der Seite"
-
-
-copyright = "Copyright © $CURRENT_YEAR Venkata Mukund Kashyap Yedunuthala $SEPARATOR Sofern nicht anders angegeben sind die Inhalte der Website unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) lizenziert."

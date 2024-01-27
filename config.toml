@@ -76,9 +76,9 @@ email="bXVrdW5kLnllZHVudXRoYWxhQG91dGxvb2suZGU="
 socials = [
     { name = "Gitlab", url = "https://gitlab.com/mukund-yedunuthala/", icon = "gitlab" },
     { name = "Forgejo", url = "https://git.mukund-yedunuthala.de/mukund-yedunuthala/", icon = "forgejo"},
-    { name = "Firefish", url = "https://fedia.social/@mukskashyap", icon = "firefish" },
+    { name = "Iceshrimp", url = "https://fedia.social/@mukskashyap", icon = "iceshrimp" },
     { name = "Pixelfed", url = "https://pixelfed.social/@mukskashyap", icon = "pixelfed" },
 
 ]
 copyright = "Copyright © $CURRENT_YEAR Venkata Mukund Kashyap Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license."
-translate_copyright = true
+copyright_translations.de = "Copyright © $CURRENT_YEAR Venkata Mukund Kashyap Yedunuthala $SEPARATOR Sofern nicht anders angegeben sind die Inhalte der Website unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) lizenziert."
