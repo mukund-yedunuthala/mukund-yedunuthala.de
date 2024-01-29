@@ -3,6 +3,9 @@ title = "Gradient Boosting Machine with Local Regression weak learner"
 description = "Demonstrative project to construct a locally weighted regression based gradient boosting machine to predict material properties."
 weight = 3
 
+[taxonomies]
+tags = ["Python", "Academia"]
+
 [extra]
 local_image = "img/proj_pppws21_tn.png"
 +++

@@ -3,6 +3,9 @@ title = "Books Companion"
 description = "(WIP) Books companion is a simple Android app to effortlessly record and manage your read and to-be-read books, making it a breeze to stay organized and discover your next literary adventure. It is primarily intended to be a hobby project."
 weight = 3
 
+[taxonomies]
+tags = ["Kotlin", "Misc"]
+
 [extra]
 local_image = "img/bc-thumbnail.png"
 link_to = "https://git.mukund-yedunuthala.de/mukund-yedunuthala/BooksCompanionApp" 

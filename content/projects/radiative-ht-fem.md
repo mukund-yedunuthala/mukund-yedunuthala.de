@@ -3,6 +3,9 @@ title = "Modeling of radiative heat-exchange using finite element method"
 description = "A finite element method based solver for a mathematical model of heat-transfer comprised of a coupled system of conduction and radiation."
 weight = 2
 
+[taxonomies]
+tags = ["Python", "Academia"]
+
 [extra]
 local_image = "img/proj_pppss22_tn.png"
 +++
