@@ -1,6 +1,6 @@
 +++
 title = "Books Companion"
-description = "(WIP) Books companion ist eine unkomplizierte Android-App, mit der Sie einfach Ihre gelesenen und noch zu lesenden Bücher erfassen und verwalten können. So bleibt es leicht, organisiert zu bleiben. Die App ist primär als Hobbyprojekt gedacht."
+description = "Books companion ist eine Android-App, mit der man einfach gelesenen und noch zu lesenden Bücher erfassen und verwalten kannst. Die App ist als ein Hobbyprojekt gedacht."
 weight = 5
 date = 2022-11-15
 
