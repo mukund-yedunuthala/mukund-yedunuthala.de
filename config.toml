@@ -8,8 +8,12 @@ minify_html = true
 default_language = "en"
 
 # Whether to build a search index to be used later on by a JavaScript library
-build_search_index = false
+build_search_index = true
 taxonomies = [{name = "tags", feed = false}]
+
+[search]
+index_format = "elasticlunr_javascript"
+
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
@@ -31,7 +35,7 @@ language_name.en = "English"
 language_name.de = "Deutsch"
 base_canonical_url = "https://mukund-yedunuthala.de"
 social_media_card = "img/me.jpg"
-
+index_format = "elasticlunr_javascript"
 theme_switcher = true
 default_theme = "dark"
 skin = "lavender"

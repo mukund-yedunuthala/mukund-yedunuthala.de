@@ -1,6 +1,6 @@
 +++
-title = "Projects"
-sort_by = "date"
+title = "Featured Projects"
+sort_by = "weight"
 template = "section.html"
 [extra]
 header = { title = "Hello! I'm Mukund!", img = "img/me.jpg", img_alt = "Mukund Yedunuthala" }

@@ -1,6 +1,7 @@
 +++
 title = "Image convolution using Message Passing Interface (MPI)"
 description = "Anwendung von Faltungskernen wie Schärfung, Unschärfe und Kantenerkennung auf Graustufenbilder mittels MPI zur parallelen Verarbeitung."
+date = 2023-03-15
 weight = 2
 
 [taxonomies]

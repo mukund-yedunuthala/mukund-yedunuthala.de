@@ -1,8 +1,8 @@
 +++
 title = "Gradient Boosting Machine with Local Regression weak learner"
+date = 2022-03-27
 description = "Demonstrative project to construct a locally weighted regression based gradient boosting machine to predict material properties."
-weight = 3
-
+weight = 4
 [taxonomies]
 tags = ["Python", "Academia"]
 
