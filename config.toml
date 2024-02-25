@@ -8,7 +8,11 @@ minify_html = true
 default_language = "en"
 
 # Whether to build a search index to be used later on by a JavaScript library
-build_search_index = false
+build_search_index = true
+taxonomies = [{name = "tags", feed = false}]
+
+[search]
+index_format = "elasticlunr_javascript"
 
 [markdown]
 # Whether to do syntax highlighting
@@ -23,7 +27,7 @@ internal_level = "warn"
 [languages.de]
 title = "Venkata Mukund Kashyap Yedunuthala"
 description = "Portfolio Webseite"
-
+taxonomies = [{name = "tags", feed = false}]
 
 
 [extra]
@@ -31,7 +35,7 @@ language_name.en = "English"
 language_name.de = "Deutsch"
 base_canonical_url = "https://mukund-yedunuthala.de"
 social_media_card = "img/me.jpg"
-
+index_format = "elasticlunr_javascript"
 theme_switcher = true
 default_theme = "dark"
 skin = "lavender"

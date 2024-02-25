@@ -1,7 +1,11 @@
 +++
 title = "Image convolution using Message Passing Interface (MPI)"
 description = "Application of convolution kernels such as sharpening, blurring, edge detection to grayscale images in parallel using MPI."
+date = 2023-03-15
 weight = 2
+
+[taxonomies]
+tags = ["C++", "High-Performance Computing", "Academia"]
 
 [extra]
 local_image = "img/proj_mpi_tn.png"

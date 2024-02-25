@@ -1,7 +1,11 @@
 +++
-title = "Modeling of radiative heat-exchange using finite element method"
+title = "Modeling of radiative heat-exchange using Finite Element Method (FEM)"
 description = "Finite-Elemente-Methode basierender Solver für ein mathematisches Modell der Wärmeübertragung, bestehend aus einem System, das zwischen Leitung und Strahlung gekoppelt ist."
-weight = 2
+date = 2022-10-15
+weight = 3
+
+[taxonomies]
+tags = ["Python", "Academia"]
 
 [extra]
 local_image = "img/proj_pppss22_tn.png"
