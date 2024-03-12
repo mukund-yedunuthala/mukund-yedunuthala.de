@@ -8,4 +8,4 @@ section_path = "projects/_index.de.md"
 max_posts = 6
 +++
 
-Ich absolviere zurzeit mein Masterstudium in Computational Materials Science an der TU Bergakademie Freiberg in Deutschland. Ich komme aus Hyderabad, Telangana in Indien und lebe seit 2019 hier. Meine Sprachkenntnisse umfassen Englisch und verhandlungssicheres Deutsch.
+Ich absolviere zurzeit mein Masterstudium in **Computational Materials Science** an der TU Bergakademie Freiberg in Deutschland. Ich komme aus Hyderabad, Telangana in Indien und wohne seit 2019 hier. Auf dieser Website liste ich einige meiner Projekte auf. 

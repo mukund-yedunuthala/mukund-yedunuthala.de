@@ -8,4 +8,4 @@ section_path = "projects/_index.md"
 max_posts = 6
 +++
 
-I am currently studying for a Master's degree in Computational Materials Science at TU Bergakademie Freiberg in Freiberg, Germany. I am from Hyderabad, Telangana, India, and have been living in Germany since 2019. I am proficient in both English and German, enabling me to communicate effectively in bilingual environments.
+I am currently studying for a Master's degree in **Computational Materials Science** at TU Bergakademie Freiberg, Germany. I am from Hyderabad, India, and have been living in Germany since 2019. I specialize in continuum (solid) mechanics, and scientific computing in Python. This is where I list some of my notable projects.
