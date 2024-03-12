@@ -16,6 +16,8 @@ Introduction
 ============
 
 An interactive game where players are challenged to guess the historical event based on emoji representations. 
+This is a hobby project to test an integration of a Flutter web app with Appwrite SDK for backend management.
+All information provided is based on factual descriptions. 
 
 Features
 ========
