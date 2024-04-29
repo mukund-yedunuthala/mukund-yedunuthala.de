@@ -3,6 +3,8 @@ title = "Guess the Event: Emoji edition"
 description = "(WIP) An interactive game where players are challenged to guess the historical event based on emoji representations."
 weight = 5
 date = 2024-02-10
+updated = 2024-04-29
+
 [taxonomies]
 tags = ["Flutter", "Misc"]
 [extra]

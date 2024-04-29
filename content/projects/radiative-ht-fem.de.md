@@ -2,6 +2,7 @@
 title = "Modeling of radiative heat-exchange using Finite Element Method (FEM)"
 description = "Finite-Elemente-Methode basierender Solver für ein mathematisches Modell der Wärmeübertragung, bestehend aus einem System, das zwischen Leitung und Strahlung gekoppelt ist."
 date = 2022-10-15
+updated = 2024-04-29
 weight = 3
 
 [taxonomies]

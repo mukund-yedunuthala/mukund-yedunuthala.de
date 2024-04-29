@@ -1,9 +1,8 @@
 +++
 title = "Impressum"
-template = "info-page.html"
 path = "/de/imprint"
 date="2023-08-27"
-updated="2023-10-16"
+updated = 2024-04-29
 +++
 
 ## Angaben gemäß § 5 TMG sowie verantwortlich für Redaktion

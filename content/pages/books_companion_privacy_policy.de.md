@@ -1,10 +1,9 @@
 +++
 title = "Books Companion"
 description = "Android app privacy policy"
-template = "info-page.html"
 path = "/de/books-companion-privacy-policy"
 date="2023-08-27"
-updated="2023-11-01"
+updated = 2024-04-29
 +++
 
 
