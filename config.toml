@@ -42,14 +42,11 @@ default_theme = "dark"
 skin = "lavender"
 favicon_emoji = "⚛️"
 headerImage = "img/me.jpg"
-
-
 remote_repository_url = "https://git.mukund-yedunuthala.de/mukund-yedunuthala/portfolio-zola-tabi"
 remote_repository_git_platform = "auto"
 remote_repository_branch = "master"
 show_remote_changes = true
 show_remote_source = true
-
 copy_button = true
 show_reading_time = false
 footnote_backlinks = true
@@ -58,7 +55,6 @@ quick_navigation_buttons = true
 toc = false
 long_date_format = "%d %B %Y"
 invert_title_order = true
-
 menu = [
     { name = "About", url = "about", trailing_slash = true },
     { name = "Projects", url = "projects", trailing_slash = true },
@@ -89,7 +85,6 @@ allowed_domains = [
         "https://www.youtube-nocookie.com",
     ] },
 ]
-
 email="bXVrdW5kLnllZHVudXRoYWxhQG91dGxvb2suZGU="
 encode_plaintext_email = true
 socials = [
@@ -100,3 +95,7 @@ socials = [
 ]
 copyright = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license."
 copyright_translations.de = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Sofern nicht anders angegeben sind die Inhalte der Website unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) lizenziert."
+[extra.analytics]
+service = "umami"
+id = ""
+self_hosted_url = ""
