@@ -1,8 +1,8 @@
 # The URL the site will be built for
 theme = "tabi"
 base_url = "https://mukund-yedunuthala.de"
-title = "Venkata Mukund Kashyap Yedunuthala"
-description = "My portfolio site."
+title = "Mukund Yedunuthala"
+description = "Student | Computational Science"
 generate_feed = false
 compile_sass = true
 minify_html = true
@@ -26,7 +26,7 @@ smart_punctuation = true
 internal_level = "warn"
 
 [languages.de]
-title = "Venkata Mukund Kashyap Yedunuthala"
+title = "Mukund Yedunuthala"
 description = "Portfolio Webseite"
 taxonomies = [{name = "tags", feed = false}]
 
@@ -93,11 +93,10 @@ allowed_domains = [
 email="bXVrdW5kLnllZHVudXRoYWxhQG91dGxvb2suZGU="
 encode_plaintext_email = true
 socials = [
-    { name = "Gitlab", url = "https://gitlab.com/mukund-yedunuthala/", icon = "gitlab" },
+    { name = "GitHub", url = "https://gitlab.com/mukund-yedunuthala/", icon = "github" },
     { name = "Forgejo", url = "https://git.mukund-yedunuthala.de/mukund-yedunuthala/", icon = "forgejo"},
-    { name = "Iceshrimp", url = "https://fedia.social/@mukskashyap", icon = "iceshrimp" },
+    { name = "LinkedIn", url = "https://www.linkedin.com/in/mukund-yedunuthala/", icon = "linkedin"},
     { name = "Pixelfed", url = "https://pixelfed.social/@mukskashyap", icon = "pixelfed" },
-
 ]
-copyright = "Copyright © $CURRENT_YEAR Venkata Mukund Kashyap Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license."
-copyright_translations.de = "Copyright © $CURRENT_YEAR Venkata Mukund Kashyap Yedunuthala $SEPARATOR Sofern nicht anders angegeben sind die Inhalte der Website unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) lizenziert."
+copyright = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license."
+copyright_translations.de = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Sofern nicht anders angegeben sind die Inhalte der Website unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) lizenziert."

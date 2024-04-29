@@ -11,16 +11,12 @@ tags = ["C++", "High-Performance Computing", "Academia"]
 local_image = "img/proj_mpi_tn.png"
 +++
 #### Git-Repository: [git/hpc-img-convolution](https://git.mukund-yedunuthala.de/mukund-yedunuthala/hpc-img-convolution)
-#### Dokumentation: [https://mukund-yedunuthala.gitlab.io/hpc-img-convolution/](https://mukund-yedunuthala.gitlab.io/hpc-img-convolution/)
+#### Dokumentation: [https://docs.mukund-yedunuthala.de/hpc-img-convolution/](https://docs.mukund-yedunuthala.de/hpc-img-convolution/)
 
 Anleitung
 =========
 
-This is a C++ project that applies convolution kernels to greyscale images
-using Message Passing Interface (MPI) to perform that in parallel. It is 
-part of a course called *High performance computing and optimization* at 
-TU Bergakademie Freiberg. This serves as a capstone project in an introductory
-course to parallel processing. 
+This is a C++ project that performs convolution operations such as blurring, sharpening, or edge detection to greyscale images and utilize Message Passing Interface (MPI) to perform that in parallel.A C++ project that performs convolution operations such as blurring, sharpening, or edge detection to greyscale images and utilize Message Passing Interface (MPI) to perform that in parallel.
 
 Build
 =====
@@ -52,5 +48,43 @@ cmake -DWITH_DOXYGEN=True ..
 make docs
 ```
 
-This generates the doxyfile that could be used to generate documentation with ``make``.
-The default is ``WITH_DOXYGEN=False``. WIP.
+This generates the doxyfile that could be used to generate documentation with make. The default is ``WITH_DOXYGEN=False``. This however generates the documentation using default theme provided by Doxygen. To get themed documentation as presented here, the working directory should be ``docs`` where a separate ``Makefile`` is provided which integrates ``Sphinx``.
+
+Usage
+=====
+Once the executable is built, the sequential version’s execution is straightforward, provided that the current working directory is ``build`` as explained earlier.
+
+```bash
+./HPC2020
+```
+
+In case of the MPI version, the execution is recommended to be through ``mpirun`` or ``mpiexec``.
+
+```bash
+mpirun -np 2 ./HPC2020
+```
+
+The input file name is, at the moment, supposed to be changed through ``main.cpp`` file only and the file must be present in ``inputs`` directory. The generated image can be found in ``output`` directory.
+
+Showcase
+========
+The following images show the original image with 512 x 512 pixels size, as well as the results upon application of edge detection, gaussian blur, and all three convolutions applied simultaneously.
+
+| ![Original image](https://gitlab.com/mukund-yedunuthala/hpc-img-convolution/-/raw/main/inputs/512.png?ref_type=heads) |
+|:--:|
+|  Fig. 1: Original Image |
+
+
+| ![Blurred image](https://gitlab.com/mukund-yedunuthala/hpc-img-convolution/-/raw/main/output/512blur.png?ref_type=heads) |
+|:--:|
+|  Fig. 2: Blurred Image |
+
+
+| ![Edges detected](https://gitlab.com/mukund-yedunuthala/hpc-img-convolution/-/raw/main/output/512edge.png?ref_type=heads) |
+|:--:|
+|  Fig. 3: Edges detected |
+
+
+| ![Sharpened image](https://gitlab.com/mukund-yedunuthala/hpc-img-convolution/-/raw/main/output/512sharpen.png?ref_type=heads) |
+|:--:|
+|  Fig. 4: Sharpened Image |
