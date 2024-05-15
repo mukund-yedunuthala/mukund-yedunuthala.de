@@ -93,8 +93,8 @@ socials = [
     { name = "LinkedIn", url = "https://www.linkedin.com/in/mukund-yedunuthala/", icon = "linkedin"},
     { name = "Pixelfed", url = "https://pixelfed.social/@mukskashyap", icon = "pixelfed" },
 ]
-copyright = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license."
-copyright_translations.de = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Sofern nicht anders angegeben sind die Inhalte der Website unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) lizenziert."
+copyright = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license."
+copyright_translations.de = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Sofern nicht anders angegeben sind die Inhalte der Website unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de) lizenziert."
 [extra.analytics]
 service = "umami"
 id = ""
