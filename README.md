@@ -2,10 +2,9 @@ Personal static webpage made using [Zola](https://getzola.org) and [tabi theme](
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-All rights reserved for the images present in [static/img](static/img/) directory in the root of this project unless otherwise specified.
-
-The content of the website itself is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
+- This project's template is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+- All rights reserved for the images present in [static/img](static/img/) directory in the root of this project unless otherwise specified.
+- The content of the website itself is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
 
 ## Acknowledgments
 
