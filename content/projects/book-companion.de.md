@@ -3,6 +3,7 @@ title = "Books Companion"
 description = "Books companion ist eine Android-App, mit der man einfach gelesenen und noch zu lesenden Bücher erfassen und verwalten kannst. Die App ist als ein Hobbyprojekt gedacht."
 weight = 5
 date = 2022-11-15
+updated = 2024-04-29
 
 
 [taxonomies]
@@ -11,7 +12,6 @@ tags = ["Kotlin", "Misc"]
 
 [extra]
 local_image = "img/bc-thumbnail.png"
-link_to = "https://git.mukund-yedunuthala.de/mukund-yedunuthala/BooksCompanionApp" 
 +++
 ![Icon](https://git.mukund-yedunuthala.de/mukund-yedunuthala/BooksCompanionApp/raw/master/app/src/main/ic_launcher-playstore.png)
 

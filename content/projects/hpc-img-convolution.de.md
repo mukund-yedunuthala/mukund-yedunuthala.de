@@ -2,6 +2,7 @@
 title = "Image convolution using Message Passing Interface (MPI)"
 description = "Anwendung von Faltungskernen wie Schärfung, Unschärfe und Kantenerkennung auf Graustufenbilder mittels MPI zur parallelen Verarbeitung."
 date = 2023-03-15
+updated = 2024-04-29
 weight = 2
 
 [taxonomies]
@@ -9,6 +10,7 @@ tags = ["C++", "High-Performance Computing", "Academia"]
 
 [extra]
 local_image = "img/proj_mpi_tn.png"
+show_remote_changes = true
 +++
 #### Git-Repository: [git/hpc-img-convolution](https://git.mukund-yedunuthala.de/mukund-yedunuthala/hpc-img-convolution)
 #### Dokumentation: [https://docs.mukund-yedunuthala.de/hpc-img-convolution/](https://docs.mukund-yedunuthala.de/hpc-img-convolution/)

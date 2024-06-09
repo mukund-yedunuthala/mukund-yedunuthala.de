@@ -1,9 +1,14 @@
 +++
 title = "Privacy policy"
-template = "info-page.html"
 path = "privacy-policy"
 date="2023-08-27"
-updated="2023-10-16"
+updated = 2024-04-29
 +++
 
-The use of my website is generally possible without providing personal data. Insofar as personal data (for example name, address or e-mail address) is collected on my pages, this is always done, as far as possible, on a voluntary basis. The data will not be passed on to third parties without express consent.
+This site does not collect any personally identifiable data. However,
+
+- This site uses a third-party, privacy-friendly system for basic analytics to understand how this site is used.
+- This site collects only the basic information which is presented by the browser or device in use to access this website.
+- None of the information collected can be used to personally identify any person or device access this site.
+
+For more details on the analytics tool used refer [the privacy policy of Umami analytics platform.](https://umami.is/privacy)

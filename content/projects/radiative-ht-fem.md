@@ -2,6 +2,7 @@
 title = "Modeling of radiative heat-exchange using Finite Element Method (FEM)"
 description = "A finite element method based solver for a mathematical model of heat-transfer comprised of a coupled system of conduction and radiation."
 date = 2022-10-15
+updated = 2024-04-29
 weight = 3
 
 [taxonomies]

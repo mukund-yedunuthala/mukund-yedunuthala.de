@@ -1,9 +1,8 @@
 +++
 title = "Imprint"
-template = "info-page.html"
 path = "imprint"
 date="2023-08-27"
-updated="2023-10-16"
+updated = 2024-04-29
 +++
 ## Information according to § 5 TMG and responsible for editing
 

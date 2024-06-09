@@ -1,6 +1,8 @@
 +++
 title = "Gradient Boosting Machine with Local Regression weak learner"
 date = 2022-03-27
+updated = 2024-04-29
+
 description = "Demonstrationsprojekt zur Konstruktion einer Gradient-Boosting-Maschine auf Basis der lokalen Regression für die Vorhersage von Materialeigenschaften."
 weight = 4
 [taxonomies]
