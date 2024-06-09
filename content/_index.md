@@ -4,7 +4,6 @@ sort_by = "weight"
 template = "section.html"
 [extra]
 header = { title = "Hello! I'm Mukund!", img = "img/me.jpg", img_alt = "Mukund Yedunuthala" }
-section_path = "projects/_index.md"
 projects_path="projects/_index.md"
 show_projects_first=true
 max_posts = 0
