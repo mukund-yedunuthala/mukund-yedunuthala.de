@@ -7,7 +7,6 @@ header = { title = "Hello! I'm Mukund!", img = "img/me.jpg", img_alt = "Mukund Y
 projects_path="projects/_index.md"
 show_projects_first=true
 max_posts = 0
-show_remote_changes = true
 max_projects = 6
 +++
 
