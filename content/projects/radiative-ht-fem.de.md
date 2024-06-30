@@ -13,7 +13,7 @@ local_image = "img/proj_pppss22_tn.png"
 +++
 
 #### Git-Repository: [git/radiative-heat-fem](https://git.mukund-yedunuthala.de/mukund-yedunuthala/radiative-heat-fem)
-#### Dokumentation: [https://mukund-yedunuthala.gitlab.io/ppp-ss2022/](https://mukund-yedunuthala.gitlab.io/ppp-ss2022/)
+#### Documentation: [https://docs.mukund-yedunuthala.de/radiative-heat-fem/](https://docs.mukund-yedunuthala.de/radiative-heat-fem/)
 
 ## Überblick
 The energy transport between material bodies is characterized by a section of science known as heat transfer. The three modes of such an energy transfer, which occurs primarily due to a difference in the temperature, are: conduction, convection, and radiation.

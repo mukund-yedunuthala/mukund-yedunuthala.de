@@ -12,7 +12,8 @@ tags = ["Python", "Academia"]
 local_image = "img/proj_pppws21_tn.png"
 +++
 #### Repository: [git/gbm-local-regression](https://git.mukund-yedunuthala.de/mukund-yedunuthala/gbm-local-regression)
-#### Documentation: [https://mukund-yedunuthala.gitlab.io/ppp-ws21-22/](https://mukund-yedunuthala.gitlab.io/ppp-ws21-22/)
+#### Documentation: [https://docs.mukund-yedunuthala.de/gbm-local-regression/](https://docs.mukund-yedunuthala.de/gbm-local-regression/)
+
 
 ## Summary
 The potential of applying statistical learning in materials science is in moving away from the Edisonian approach, avoiding tedious trial-and-error discovery. Data-driven paradigms in materials science enable one to develop efficient, effective methods for generating, managing and utilizing relevant information.
