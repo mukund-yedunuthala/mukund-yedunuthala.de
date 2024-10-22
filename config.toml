@@ -2,7 +2,7 @@
 theme = "tabi"
 base_url = "https://mukund-yedunuthala.de"
 title = "Mukund Yedunuthala"
-description = "Student | Computational Science"
+description = "Graduate | Computational Engineering"
 generate_feeds = false
 compile_sass = true
 minify_html = true
@@ -27,7 +27,7 @@ internal_level = "warn"
 
 [languages.de]
 title = "Mukund Yedunuthala"
-description = "Portfolio Webseite"
+description = "Graduate | Computational Engineering"
 taxonomies = [{name = "tags", feed = false}]
 
 
