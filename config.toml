@@ -66,33 +66,23 @@ footer_menu = [
     {url = "sitemap.xml", name = "Sitemap", trailing_slash = false},
 ]
 allowed_domains = [
-    { directive = "font-src", domains = [
-        "'self'",
-        "data:",
-    ] },
-    { directive = "img-src", domains = [
-        "'self'",
-        "https://*",
-        "data:",
-    ] },
-    { directive = "script-src", domains = [
-        "'self'",
-    ] }, # finally made csp work for this
-    { directive = "style-src", domains = [
-        "'self'",
-    ] },
-    { directive = "frame-src", domains = [
-        "https://www.youtube-nocookie.com",
-    ] },
+    { directive = "font-src", domains = ["'self'", "data:"] },
+    { directive = "img-src", domains = ["'self'", "https://*", "data:"] },
+    { directive = "script-src", domains = ["'self'"] },
+    { directive = "style-src", domains = ["'self'"] },
+    { directive = "frame-src", domains = ["player.vimeo.com", "https://www.youtube-nocookie.com"] },
 ]
-email="bXVrdW5kLnllZHVudXRoYWxhQG91dGxvb2suZGU="
+
+bloglist_date = "both"
+email="bXVrdW5keWVkdW51dGhhbGFAZ214LmRl"
 encode_plaintext_email = true
 socials = [
     { name = "GitHub", url = "https://github.com/mukund-yedunuthala/", icon = "github" },
     { name = "Forgejo", url = "https://git.mukund-yedunuthala.de/mukund-yedunuthala/", icon = "forgejo"},
     { name = "LinkedIn", url = "https://www.linkedin.com/in/mukund-yedunuthala/", icon = "linkedin"},
-    { name = "Pixelfed", url = "https://pixelfed.social/@mukskashyap", icon = "pixelfed" },
+    { name = "Mastodon", url = "https://convo.casa/@mukskashyap", icon = "mastodon" },
 ]
+FediverseCreator = {  handle = "mukskashyap", domain = "convo.casa" }
 copyright = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license."
 copyright_translations.de = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Sofern nicht anders angegeben sind die Inhalte der Website unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de) lizenziert."
 [extra.analytics]
