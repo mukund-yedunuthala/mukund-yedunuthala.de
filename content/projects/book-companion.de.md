@@ -3,7 +3,7 @@ title = "Books Companion"
 description = "Books companion ist eine Android-App, mit der man einfach gelesenen und noch zu lesenden Bücher erfassen und verwalten kannst. Die App ist als ein Hobbyprojekt gedacht."
 weight = 5
 date = 2022-11-15
-updated = 2024-04-29
+updated = 2024-12-13
 
 
 [taxonomies]
@@ -13,14 +13,14 @@ tags = ["Kotlin", "Misc"]
 [extra]
 local_image = "img/bc-thumbnail.png"
 +++
-![Icon](https://git.mukund-yedunuthala.de/mukund-yedunuthala/BooksCompanionApp/raw/master/app/src/main/ic_launcher-playstore.png)
+![Icon](https://github.com/mukund-yedunuthala/BooksCompanionApp/raw/master/app/src/main/ic_launcher-playstore.png)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
 This is one of many open source book trackers available for Android, still a work-in-progress. Hobby project, built entirely on Jetpack Compose.
 
 ## Screenshots
-For screenshots see project [README.md](https://git.mukund-yedunuthala.de/mukund-yedunuthala/BooksCompanionApp)
+For screenshots see project [README.md](https://github.com/mukund-yedunuthala/BooksCompanionApp)
 
 ## Installation
 

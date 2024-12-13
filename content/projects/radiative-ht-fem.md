@@ -2,7 +2,7 @@
 title = "Modeling of radiative heat-exchange using Finite Element Method (FEM)"
 description = "A finite element method based solver for a mathematical model of heat-transfer comprised of a coupled system of conduction and radiation."
 date = 2022-10-15
-updated = 2024-04-29
+updated = 2024-12-13
 weight = 3
 
 [taxonomies]
@@ -12,7 +12,7 @@ tags = ["Python", "Academia"]
 local_image = "img/proj_pppss22_tn.png"
 +++
 
-#### Repository: [git/radiative-heat-fem](https://git.mukund-yedunuthala.de/mukund-yedunuthala/radiative-heat-fem)
+#### Repository: [git/radiative-heat-fem](https://gitlab.com/mukund-yedunuthala/radiative-heat-fem)
 #### Documentation: [https://docs.mukund-yedunuthala.de/radiative-heat-fem/](https://docs.mukund-yedunuthala.de/radiative-heat-fem/)
 
 ## Summary

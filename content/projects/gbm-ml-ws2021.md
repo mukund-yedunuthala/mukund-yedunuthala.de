@@ -1,7 +1,7 @@
 +++
 title = "Gradient Boosting Machine with Local Regression weak learner"
 date = 2022-03-27
-updated = 2024-04-29
+updated = 2024-12-13
 
 description = "Demonstrative project to construct a locally weighted regression based gradient boosting machine to predict material properties."
 weight = 4
@@ -11,7 +11,7 @@ tags = ["Python", "Academia"]
 [extra]
 local_image = "img/proj_pppws21_tn.png"
 +++
-#### Repository: [git/gbm-local-regression](https://git.mukund-yedunuthala.de/mukund-yedunuthala/gbm-local-regression)
+#### Repository: [git/gbm-local-regression](https://gitlab.com/mukund-yedunuthala/gbm-local-regression)
 #### Documentation: [https://docs.mukund-yedunuthala.de/gbm-local-regression/](https://docs.mukund-yedunuthala.de/gbm-local-regression/)
 
 
