@@ -2,7 +2,7 @@
 title = "Image convolution using Message Passing Interface (MPI)"
 description = "Application of convolution kernels such as sharpening, blurring, edge detection to grayscale images in parallel using MPI."
 date = 2023-03-15
-updated = 2024-04-29
+updated = 2024-12-13
 weight = 2
 
 [taxonomies]
@@ -12,7 +12,7 @@ tags = ["C++", "High-Performance Computing", "Academia"]
 local_image = "img/proj_mpi_tn.png"
 show_remote_changes = true
 +++
-#### Repository: [git/hpc-img-convolution](https://git.mukund-yedunuthala.de/mukund-yedunuthala/hpc-img-convolution)
+#### Repository: [git/hpc-img-convolution](https://gitlab.com/mukund-yedunuthala/hpc-img-convolution)
 #### Documentation: [https://docs.mukund-yedunuthala.de/hpc-img-convolution/](https://docs.mukund-yedunuthala.de/hpc-img-convolution/)
 
 Introduction
