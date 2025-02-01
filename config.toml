@@ -78,8 +78,8 @@ email="bXVrdW5keWVkdW51dGhhbGFAZ214LmRl"
 encode_plaintext_email = true
 socials = [
     { name = "GitHub", url = "https://github.com/mukund-yedunuthala/", icon = "github" },
-    { name = "Forgejo", url = "https://git.mukund-yedunuthala.de/mukund-yedunuthala/", icon = "forgejo"},
     { name = "LinkedIn", url = "https://www.linkedin.com/in/mukund-yedunuthala/", icon = "linkedin"},
+    { name = "Pixelfed", url = "https://pixelfed.social/mukskashyap", icon = "pixelfed" },
     { name = "Mastodon", url = "https://convo.casa/@mukskashyap", icon = "mastodon" },
 ]
 FediverseCreator = {  handle = "mukskashyap", domain = "convo.casa" }
