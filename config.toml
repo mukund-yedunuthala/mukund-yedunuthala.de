@@ -42,7 +42,7 @@ default_theme = "dark"
 skin = "lavender"
 favicon_emoji = "⚛️"
 headerImage = "img/me.jpg"
-remote_repository_url = "https://github.com/mukund-yedunuthala/portfolio-zola-tabi"
+remote_repository_url = "https://github.com/mukund-yedunuthala/mukund-yedunuthala.de"
 remote_repository_git_platform = "github"
 remote_repository_branch = "master"
 show_remote_changes = true
@@ -78,6 +78,7 @@ email="bXVrdW5keWVkdW51dGhhbGFAZ214LmRl"
 encode_plaintext_email = true
 socials = [
     { name = "GitHub", url = "https://github.com/mukund-yedunuthala/", icon = "github" },
+    { name = "GitLab", url = "https://gitlab.com/mukund-yedunuthala/", icon = "gitlab" },
     { name = "LinkedIn", url = "https://www.linkedin.com/in/mukund-yedunuthala/", icon = "linkedin"},
     { name = "Pixelfed", url = "https://pixelfed.social/mukskashyap", icon = "pixelfed" },
     { name = "Mastodon", url = "https://convo.casa/@mukskashyap", icon = "mastodon" },
