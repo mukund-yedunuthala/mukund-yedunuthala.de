@@ -13,7 +13,7 @@ local_image = "img/proj_mpi_tn.png"
 show_remote_changes = true
 +++
 #### Repository: [git/hpc-img-convolution](https://gitlab.com/mukund-yedunuthala/hpc-img-convolution)
-#### Documentation: [https://docs.mukund-yedunuthala.de/hpc-img-convolution/](https://docs.mukund-yedunuthala.de/hpc-img-convolution/)
+#### Documentation: [https://mukund-yedunuthala.de/docs/hpc-img-convolution/](https://mukund-yedunuthala.de/docs/hpc-img-convolution/)
 
 Introduction
 ============
@@ -24,7 +24,7 @@ Build
 =====
 
 This project utilizes CMake build system. Assuming one is located at the root
-of the project, the following snippet details instructions to build the 
+of the project, the following snippet details instructions to build the
 executable.
 
 ```bash
@@ -41,7 +41,7 @@ cmake -DWITH_MPI=False ..
 make
 ```
 
-This builds the executable that is entirely serialized. Might be more suitable for 
+This builds the executable that is entirely serialized. Might be more suitable for
 GNU compiler. The default is ``WITH_MPI=True``.
 
 ```bash
