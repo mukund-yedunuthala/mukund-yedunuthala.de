@@ -12,7 +12,9 @@ tags = ["C++", "High-Performance Computing", "Academia"]
 local_image = "img/proj_mpi_tn.png"
 show_remote_changes = true
 +++
-
+## **Links**  
+#### Repository: [git/mpi-eigen-value](https://gitlab.com/mukund-yedunuthala/mpi-eigen-value)
+#### Documentation: [https://mukund-yedunuthala.de/docs/mpi-eigen-value/](https://mukund-yedunuthala.de/docs/mpi-eigen-value/)
 ## **Overview**  
 This project implements a **parallel dense matrix and vector format** in **C++** using **MPI** and the **C++ Standard Template Library (STL)**. The implementation includes:  
 - **Custom C++ matrix and vector classes**, utilizing dynamically allocated arrays for efficient data handling.  

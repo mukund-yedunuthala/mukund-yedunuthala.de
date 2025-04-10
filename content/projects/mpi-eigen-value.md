@@ -13,7 +13,7 @@ local_image = "img/proj_mpi_evp.png"
 show_remote_changes = true
 +++
 ## **Links**  
-#### Repository: [git/mpi-eigen-value](https://github.com/mukund-yedunuthala/mpi-eigen-value)
+#### Repository: [git/mpi-eigen-value](https://gitlab.com/mukund-yedunuthala/mpi-eigen-value)
 #### Documentation: [https://mukund-yedunuthala.de/docs/mpi-eigen-value/](https://mukund-yedunuthala.de/docs/mpi-eigen-value/)
 ## **Overview**  
 This project implements a **parallel dense matrix and vector format** in **C++** using **MPI** and the **C++ Standard Template Library (STL)**. The implementation includes:  
