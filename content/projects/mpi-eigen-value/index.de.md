@@ -2,7 +2,7 @@
 title = "Parallel Power Iteration using MPI"
 description = "Parallel power iteration with MPI, featuring custom C++ matrix and vector classes, and left stochastic matrix generation using a Bernoulli distribution with a configurable seed."
 date = 2025-02-16
-updated = 2025-02-16
+updated = 2025-05-06
 weight = 4
 
 [taxonomies]
