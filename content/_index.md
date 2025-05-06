@@ -5,8 +5,10 @@ template = "section.html"
 [extra]
 header = { title = "Hello! I'm Mukund!", img = "img/me.jpg", img_alt = "Mukund Yedunuthala" }
 projects_path="projects/_index.md"
+section_path = "blog/_index.md" 
 show_projects_first=true
-max_posts = 0
+max_posts = 2
+show_remote_changes = true
 max_projects = 6
 +++
 

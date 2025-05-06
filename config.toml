@@ -2,7 +2,7 @@
 theme = "tabi"
 base_url = "https://mukund-yedunuthala.de"
 title = "Mukund Yedunuthala"
-description = "Computational Engineering Graduate"
+description = "Computational Engineering Specialist"
 generate_feeds = false
 compile_sass = true
 minify_html = false
@@ -58,7 +58,8 @@ invert_title_order = true
 menu = [
     { name = "About", url = "about", trailing_slash = true },
     { name = "Projects", url = "projects", trailing_slash = true },
-    { name = "Tags", url = "tags", trailing_slash = true },
+    # { name = "Tags", url = "tags", trailing_slash = true },
+    { name = "Blog", url = "blog", trailing_slash = true },
 ]
 footer_menu = [
     {url = "imprint", name = "Imprint", trailing_slash = true},
