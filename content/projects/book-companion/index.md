@@ -8,7 +8,7 @@ updated = 2024-12-13
 tags = ["Kotlin", "Misc"]
 
 [extra]
-local_image = "img/bc-thumbnail.png"
+local_image = "projects/book-companion/img/bc-thumbnail.png"
 +++
 ![Icon](https://github.com/mukund-yedunuthala/BooksCompanionApp/raw/master/app/src/main/ic_launcher-playstore.png)
 

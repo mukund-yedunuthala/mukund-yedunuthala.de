@@ -9,7 +9,7 @@ weight = 4
 tags = ["R", "Academia"]
 
 [extra]
-local_image = "img/stc-methd.png"
+local_image = "projects/stochastic-methods/img/stc-methd.png"
 show_remote_changes = true
 +++
 

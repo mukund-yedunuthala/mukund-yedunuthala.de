@@ -9,7 +9,7 @@ weight = 2
 tags = ["C++", "High-Performance Computing", "Academia"]
 
 [extra]
-local_image = "img/proj_mpi_tn.png"
+local_image = "projects/hpc-img-convolution/img/proj_mpi_tn.png"
 show_remote_changes = true
 +++
 #### Git-Repository: [git/hpc-img-convolution](https://gitlab.com/mukund-yedunuthala/hpc-img-convolution)

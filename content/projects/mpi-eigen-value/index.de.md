@@ -9,7 +9,7 @@ weight = 4
 tags = ["C++", "High-Performance Computing", "Academia"]
 
 [extra]
-local_image = "img/proj_mpi_tn.png"
+local_image = "projects/mpi-eigen-value/img/proj_mpi_evp.png"
 show_remote_changes = true
 +++
 ## **Links**  

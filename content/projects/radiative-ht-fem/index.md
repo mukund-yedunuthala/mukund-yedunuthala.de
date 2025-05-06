@@ -9,7 +9,7 @@ weight = 3
 tags = ["Python", "Academia"]
 
 [extra]
-local_image = "img/proj_pppss22_tn.png"
+local_image = "projects/radiative-ht-fem/img/proj_pppss22_tn.png"
 +++
 
 #### Repository: [git/radiative-heat-fem](https://gitlab.com/mukund-yedunuthala/radiative-heat-fem)
