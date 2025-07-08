@@ -1,6 +1,6 @@
 Personal static webpage made using [Zola](https://getzola.org) and [tabi theme](https://github.com/welpo/tabi).
 
-Website status: ![Health](https://uptime607.mukund-yedunuthala.de/api/v1/endpoints/core_main-website/health/badge.svg)
+![Health](https://uptime607.mukund-yedunuthala.de/api/v1/endpoints/core_main-website/health/badge.svg)
 
 ## License
 
@@ -20,5 +20,5 @@ The submodules are licensed under the following licenses:
 
 The following social icons as sourced from the respective projects:
 
-- [Pixelfed](https://pixelfed.org) under [GNU AGPLv3](https://github.com/pixelfed/pixelfed/blob/dev/LICENSE). 
+- [Pixelfed](https://pixelfed.org) under [GNU AGPLv3](https://github.com/pixelfed/pixelfed/blob/dev/LICENSE).
 - [Forgejo](https://forgejo.org) under [License](https://codeberg.org/forgejo/forgejo/src/branch/forgejo/LICENSE).
