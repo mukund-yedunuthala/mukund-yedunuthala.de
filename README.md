@@ -1,5 +1,7 @@
 Personal static webpage made using [Zola](https://getzola.org) and [tabi theme](https://github.com/welpo/tabi).
 
+Website status: ![Health](https://uptime607.mukund-yedunuthala.de/api/v1/endpoints/core_main-website/health/badge.svg)
+
 ## License
 
 - This project's template is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
