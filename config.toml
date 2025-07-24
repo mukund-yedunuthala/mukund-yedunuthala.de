@@ -1,6 +1,6 @@
 # The URL the site will be built for
 theme = "tabi"
-base_url = "https://mukund-yedunuthala.de"
+base_url = "https://mukundyedunuthala.page"
 title = "Mukund Yedunuthala"
 description = "Computational Engineering Specialist"
 generate_feeds = false
@@ -10,7 +10,7 @@ default_language = "en"
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
-taxonomies = [{name = "tags", feed = false}]
+taxonomies = [{ name = "tags", feed = false }]
 
 [search]
 index_format = "elasticlunr_javascript"
@@ -21,6 +21,7 @@ index_format = "elasticlunr_javascript"
 highlight_code = true
 highlight_theme = "css"
 smart_punctuation = true
+bottom_footnotes = true
 
 [link_checker]
 internal_level = "warn"
@@ -28,18 +29,18 @@ internal_level = "warn"
 [languages.de]
 title = "Mukund Yedunuthala"
 description = "Computational Engineering Absolvent"
-taxonomies = [{name = "tags", feed = false}]
+taxonomies = [{ name = "tags", feed = false }]
 
 
 [extra]
 language_name.en = "English"
 language_name.de = "Deutsch"
-base_canonical_url = "https://mukund-yedunuthala.de"
+base_canonical_url = "https://mukundyedunuthala.page"
 social_media_card = "img/me.jpg"
 index_format = "elasticlunr_javascript"
 theme_switcher = true
 default_theme = "dark"
-skin = "lavender"
+skin = "blue"
 favicon_emoji = "⚛️"
 headerImage = "img/me.jpg"
 remote_repository_url = "https://github.com/mukund-yedunuthala/mukund-yedunuthala.de"
@@ -62,29 +63,43 @@ menu = [
     { name = "Blog", url = "blog", trailing_slash = true },
 ]
 footer_menu = [
-    {url = "imprint", name = "Imprint", trailing_slash = true},
-    {url = "privacy-policy", name = "Privacy policy", trailing_slash = true},
-    {url = "sitemap.xml", name = "Sitemap", trailing_slash = false},
+    { url = "imprint", name = "Imprint", trailing_slash = true },
+    { url = "privacy-policy", name = "Privacy policy", trailing_slash = true },
+    { url = "sitemap.xml", name = "Sitemap", trailing_slash = false },
 ]
 allowed_domains = [
-    { directive = "font-src", domains = ["'self'", "data:"] },
-    { directive = "img-src", domains = ["'self'", "https://*", "data:"] },
-    { directive = "script-src", domains = ["'self'"] },
-    { directive = "style-src", domains = ["'self'"] },
-    { directive = "frame-src", domains = ["player.vimeo.com", "https://www.youtube-nocookie.com"] },
+    { directive = "font-src", domains = [
+        "'self'",
+        "data:",
+    ] },
+    { directive = "img-src", domains = [
+        "'self'",
+        "https://*",
+        "data:",
+    ] },
+    { directive = "script-src", domains = [
+        "'self'",
+    ] },
+    { directive = "style-src", domains = [
+        "'self'",
+    ] },
+    { directive = "frame-src", domains = [
+        "player.vimeo.com",
+        "https://www.youtube-nocookie.com",
+    ] },
 ]
 
 bloglist_date = "both"
-email="bXVrdW5keWVkdW51dGhhbGFAZ214LmRl"
+email = "bXVrdW5keWVkdW51dGhhbGFAZ214LmRl"
 encode_plaintext_email = true
 socials = [
     { name = "GitHub", url = "https://github.com/mukund-yedunuthala/", icon = "github" },
     { name = "GitLab", url = "https://gitlab.com/mukund-yedunuthala/", icon = "gitlab" },
-    { name = "LinkedIn", url = "https://www.linkedin.com/in/mukund-yedunuthala/", icon = "linkedin"},
+    { name = "LinkedIn", url = "https://www.linkedin.com/in/mukund-yedunuthala/", icon = "linkedin" },
     { name = "Pixelfed", url = "https://pixelfed.social/mukskashyap", icon = "pixelfed" },
     { name = "Mastodon", url = "https://convo.casa/@mukskashyap", icon = "mastodon" },
 ]
-FediverseCreator = {  handle = "mukskashyap", domain = "convo.casa" }
+FediverseCreator = { handle = "mukskashyap", domain = "convo.casa" }
 copyright = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license."
 copyright_translations.de = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Sofern nicht anders angegeben sind die Inhalte der Website unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de) lizenziert."
 [extra.analytics]

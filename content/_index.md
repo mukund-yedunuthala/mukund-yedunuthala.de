@@ -3,10 +3,10 @@ title = "Latest Posts"
 sort_by = "weight"
 template = "section.html"
 [extra]
-header = { title = "Hello! I'm Mukund!", img = "img/me.jpg", img_alt = "Mukund Yedunuthala" }
+header = { title = "Hello, I'm Mukund.", img = "img/me.jpg", img_alt = "Mukund Yedunuthala" }
 projects_path="projects/_index.md"
 max_projects = 6
-section_path = "blog/_index.md" 
+section_path = "blog/_index.md"
 max_posts = 2
 show_projects_first=true
 show_remote_changes = true

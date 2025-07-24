@@ -11,8 +11,11 @@ tags = ["Python", "Academia"]
 [extra]
 local_image = "projects/gbm-ml-ws2021/img/proj_pppws21_tn.png"
 +++
+## Links
+
 #### Git-Repository: [git/gbm-local-regression](https://gitlab.com/mukund-yedunuthala/gbm-local-regression)
-#### Documentation: [https://mukund-yedunuthala.de/docs/gbm-local-regression/](https://mukund-yedunuthala.de/docs/gbm-local-regression/)
+
+#### [Dokumentation](https://mukundyedunuthala.page/docs/gbm-local-regression/)
 
 
 ## Überblick
