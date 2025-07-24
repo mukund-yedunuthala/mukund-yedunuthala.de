@@ -29,5 +29,3 @@ The practical value of these approaches lies in their flexibility and performanc
 ## Bibliography
 
 [^1]: This article is incomplete and is a work in progress.
-
-

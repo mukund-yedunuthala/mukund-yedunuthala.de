@@ -29,5 +29,3 @@ In conclusion, overlapping Schwarz domain decomposition stands as a robust, flex
 ## Bibliography
 
 [^1]: This article is incomplete and is a work in progress.
-
-

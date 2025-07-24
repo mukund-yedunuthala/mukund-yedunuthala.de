@@ -29,5 +29,3 @@ The entire framework is structured with extensibility in mind, allowing for easy
 ## Bibliography
 
 [^1]: This article is incomplete and is a work in progress.
-
-
