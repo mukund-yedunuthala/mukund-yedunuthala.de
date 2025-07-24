@@ -10,6 +10,7 @@ tags = ["Python", "Academia"]
 
 [extra]
 local_image = "projects/radiative-ht-fem/img/proj_pppss22_tn.png"
+social_media_card = "img/social_cards/projects_radiative_ht_fem.jpg"
 +++
 ## Links
 

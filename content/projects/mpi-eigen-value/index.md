@@ -11,6 +11,7 @@ tags = ["C++", "High-Performance Computing", "Academia"]
 [extra]
 local_image = "projects/mpi-eigen-value/img/proj_mpi_evp.png"
 show_remote_changes = true
+social_media_card = "img/social_cards/projects_mpi_eigen_value.jpg"
 +++
 
 ## **Links**  

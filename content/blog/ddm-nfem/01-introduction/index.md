@@ -3,6 +3,9 @@ title = "Domain decomposition methods and nonlinear solid mechanics"
 date = 2025-07-24
 updated = 2025-07-24
 description = "An Executive Summary series on: Overlapping Schwarz Domain Decomposition Methods in Python with Applications in Structural Mechanics"
+
+[extra]
+social_media_card = "img/social_cards/blog_ddm_nfem_01_introduction.jpg"
 +++
 ## Introduction
 The field of computational structural mechanics has undergone significant evolution, driven by the escalating complexities of engineering structures and the need for precise simulations. As engineers and researchers strive to model intricate behaviors of materials and structures under various loading conditions, traditional analytical solutions quickly become inadequate. The increasing demand for accurate and efficient computational tools has resulted in the wide adoption of the finite element method (FEM), a numerical framework capable of handling the multifaceted challenges posed by real-world engineering problems. However, as model sizes grow and nonlinear phenomena such as plasticity or large deformations are incorporated, the computational demands multiply, necessitating more advanced algorithms and robust solvers.

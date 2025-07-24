@@ -9,6 +9,7 @@ tags = ["Kotlin", "Misc"]
 
 [extra]
 local_image = "projects/book-companion/img/bc-thumbnail.png"
+social_media_card = "img/social_cards/projects_book_companion.jpg"
 +++
 ![Icon](https://github.com/mukund-yedunuthala/BooksCompanionApp/raw/master/app/src/main/ic_launcher-playstore.png)
 

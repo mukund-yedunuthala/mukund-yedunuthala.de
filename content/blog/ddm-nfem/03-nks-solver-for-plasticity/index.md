@@ -3,6 +3,9 @@ title = "Case Studies, Benchmarking, and Results"
 date = 2025-07-24
 updated = 2025-07-24
 description = "An Executive Summary series on: Overlapping Schwarz Domain Decomposition Methods in Python with Applications in Structural Mechanics"
+
+[extra]
+social_media_card = "img/social_cards/blog_ddm_nfem_03_nks_solver_for_plasticity.jpg"
 +++
 
 <!-- series_intro -->

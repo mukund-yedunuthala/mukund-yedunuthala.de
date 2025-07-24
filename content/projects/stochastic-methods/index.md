@@ -2,7 +2,7 @@
 title = "Stochastic Modeling in R"
 description = "This study explores stochastic modeling techniques in the context of materials science, using R and RStudio for implementation."
 date = 2021-03-21
-updated = 2025-04-10
+updated = 2025-07-24
 weight = 4
 
 [taxonomies]
@@ -11,6 +11,7 @@ tags = ["R", "Academia"]
 [extra]
 local_image = "projects/stochastic-methods/img/stc-methd.png"
 show_remote_changes = true
+social_media_card = "img/social_cards/projects_stochastic_methods.jpg"
 +++
 
 ### Overview:

@@ -10,6 +10,7 @@ tags = ["Python", "Academia"]
 
 [extra]
 local_image = "projects/gbm-ml-ws2021/img/proj_pppws21_tn.png"
+social_media_card = "img/social_cards/de_projects_gbm_ml_ws2021.jpg"
 +++
 ## Links
 

@@ -3,6 +3,9 @@ title = "Theoretical background of the thesis"
 date = 2025-07-24
 updated = 2025-07-24
 description = "An Executive Summary series on: Overlapping Schwarz Domain Decomposition Methods in Python with Applications in Structural Mechanics"
+
+[extra]
+social_media_card = "img/social_cards/blog_ddm_nfem_02_theoretical_background.jpg"
 +++
 <!-- series_intro -->
 ## Nonlinear Structural Mechanics: Focus on Plasticity

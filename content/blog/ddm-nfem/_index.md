@@ -15,6 +15,7 @@ default = "Part $SERIES_PAGE_INDEX of $SERIES_PAGES_NUMBER"
 
 [extra.series_outro_templates]
 default = "Part $SERIES_PAGE_INDEX of $SERIES_PAGES_NUMBER"
+social_media_card = "img/social_cards/blog_ddm_nfem.jpg"
 +++
 
 This research aims to address the computational challenges inherent in solving large-scale nonlinear systems in structural mechanics, with particular focus on problems exhibiting material plasticity. The motivation is to harness advanced domain decomposition methods to improve the efficiency, scalability, and robustness of finite element analysis for complex engineering structures.
