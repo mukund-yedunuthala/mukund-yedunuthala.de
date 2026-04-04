@@ -4,7 +4,7 @@ description = "This study explores stochastic modeling techniques in the context
 date = 2021-03-21
 updated = 2025-07-24
 weight = 4
-
+author = "Mukund Yedunuthala"
 [taxonomies]
 tags = ["R", "Academia"]
 
