@@ -10,6 +10,7 @@ section_path = "blog/_index.md"
 max_posts = 2
 show_projects_first=true
 show_remote_changes = true
+social_media_card = "img/social_cards/index.jpg"
 +++
 
 Ich habe einem Master-Abschluss in Computational Engineering von der TU Bergakademie Freiberg in Deutschland und einem Bachelor-Abschluss in Maschinenbau von der Osmania University in Indien. Ich habe Erfahrung in der Entwicklung von Hochleistungsrechnen und der Finite-Elemente-Analyse (FEA) gesammelt. Meine Schwerpunkte liegen in der Festkörpermechanik, numerischen Modellierung und ich verfüge über fundierte Kenntnisse in Fortran, Python, MATLAB und C++. Unten finden Sie eine Auswahl meiner Projekte, die zeigen, wie ich diese Fähigkeiten einsetze.
