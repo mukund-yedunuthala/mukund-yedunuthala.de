@@ -1,0 +1,6 @@
+Element Routine
+===============
+.. automodule:: elementRoutine
+   :members:
+   :undoc-members:
+   :show-inheritance:

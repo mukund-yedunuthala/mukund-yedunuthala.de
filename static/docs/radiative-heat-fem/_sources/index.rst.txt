@@ -1,0 +1,14 @@
+.. Modeling of radiative heat-exchange using finite element method documentation master file, created by
+   sphinx-quickstart on Tue Jun 14 17:51:43 2022.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Modeling of radiative heat-exchange using finite element method
+===============================================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   modules
+   tests

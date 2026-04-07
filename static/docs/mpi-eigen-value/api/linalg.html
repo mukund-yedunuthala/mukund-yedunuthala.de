@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Linear Algebra helpers - Power iterations in parallel using MPI 1.0.0 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Implementation example scripts" href="../scripts/index.html" /><link rel="prev" title="Helpers" href="index.html" />
+      <link rel="canonical" href="https://mukund-yedunuthala.de/docs/mpi-eigen-value/api/linalg.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=10d1008b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mukund-yedunuthala.de/docs/mpi-eigen-value/api/linalg.html"/>
+<meta property="og:title" content="Linear Algebra helpers"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../index.html">
+      
+      
+      <strong>Power iterations in parallel using MPI</strong>
+    </a>
+    <div class="sy-head-nav" id="HeadNav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="HeadNav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Power iterations in parallel using MPI documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Helpers</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Linear Algebra helpers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/index.html">Implementation example scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scripts/mpi.html">Parallel implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripts/sequential.html">Sequential implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/index.html">Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tests/test_vectors.html">Tests for Vectors class</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#_CPPv47Vectors"><code class="docutils literal notranslate"><span class="pre">Vectors</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N7Vectors7VectorsERj"><code class="docutils literal notranslate"><span class="pre">Vectors::Vectors()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7VectorsD0Ev"><code class="docutils literal notranslate"><span class="pre">Vectors::~Vectors()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors7VectorsERK7Vectors"><code class="docutils literal notranslate"><span class="pre">Vectors::Vectors()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7VectorsaSERK7Vectors"><code class="docutils literal notranslate"><span class="pre">Vectors::operator=()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors14getDataAtIndexEj"><code class="docutils literal notranslate"><span class="pre">Vectors::getDataAtIndex()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors7getSizeEv"><code class="docutils literal notranslate"><span class="pre">Vectors::getSize()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors7getDataEv"><code class="docutils literal notranslate"><span class="pre">Vectors::getData()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors7setDataERPd"><code class="docutils literal notranslate"><span class="pre">Vectors::setData()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors15setValueAtIndexEjd"><code class="docutils literal notranslate"><span class="pre">Vectors::setValueAtIndex()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors10setToValueEd"><code class="docutils literal notranslate"><span class="pre">Vectors::setToValue()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors3sumEv"><code class="docutils literal notranslate"><span class="pre">Vectors::sum()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors6abssumEv"><code class="docutils literal notranslate"><span class="pre">Vectors::abssum()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors4normEv"><code class="docutils literal notranslate"><span class="pre">Vectors::norm()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors3dotER7Vectors"><code class="docutils literal notranslate"><span class="pre">Vectors::dot()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors5printEv"><code class="docutils literal notranslate"><span class="pre">Vectors::print()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors4sizeE"><code class="docutils literal notranslate"><span class="pre">Vectors::size</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N7Vectors4dataE"><code class="docutils literal notranslate"><span class="pre">Vectors::data</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv46Matrix"><code class="docutils literal notranslate"><span class="pre">Matrix</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N6Matrix6MatrixERjRj"><code class="docutils literal notranslate"><span class="pre">Matrix::Matrix()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N6Matrix6MatrixERK6Matrix"><code class="docutils literal notranslate"><span class="pre">Matrix::Matrix()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N6MatrixaSERK6Matrix"><code class="docutils literal notranslate"><span class="pre">Matrix::operator=()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N6MatrixD0Ev"><code class="docutils literal notranslate"><span class="pre">Matrix::~Matrix()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N6Matrix8getValueEjj"><code class="docutils literal notranslate"><span class="pre">Matrix::getValue()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N6Matrix7getSizeEv"><code class="docutils literal notranslate"><span class="pre">Matrix::getSize()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N6Matrix8setValueEjjd"><code class="docutils literal notranslate"><span class="pre">Matrix::setValue()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N6Matrix3dotER7Vectors"><code class="docutils literal notranslate"><span class="pre">Matrix::dot()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N6Matrix5printEv"><code class="docutils literal notranslate"><span class="pre">Matrix::print()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N6Matrix4rowsE"><code class="docutils literal notranslate"><span class="pre">Matrix::rows</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N6Matrix4colsE"><code class="docutils literal notranslate"><span class="pre">Matrix::cols</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N6Matrix4dataE"><code class="docutils literal notranslate"><span class="pre">Matrix::data</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6"><div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Power iterations in parallel using MPI</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">Helpers</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Linear Algebra helpers</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="linear-algebra-helpers">
+<span id="api-linalg"></span><h1>Linear Algebra helpers<a class="headerlink" href="#linear-algebra-helpers" title="Link to this heading">¶</a></h1>
+<p>Header file consisting a collection of basic linear algebra classes. </p>
+<p><dl class="simple">
+<dt><strong>Author</strong></dt><dd><p>Mukund Yedunuthala </p>
+</dd>
+</dl>
+</p>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv47Vectors">
+<span id="_CPPv37Vectors"></span><span id="_CPPv27Vectors"></span><span id="Vectors"></span><span class="target" id="classVectors"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Vectors</span></span></span><a class="headerlink" href="#_CPPv47Vectors" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;linalg.h&gt;</em></div>
+<p>A class representing a dynamic array of double values with vector operations. </p>
+<p><dl class="simple">
+<dt><strong>Author</strong></dt><dd><p>Mukund Yedunuthala </p>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors7VectorsERj">
+<span id="_CPPv3N7Vectors7VectorsERj"></span><span id="_CPPv2N7Vectors7VectorsERj"></span><span id="Vectors::Vectors__unsigned-iR"></span><span class="target" id="classVectors_1a35627fae3c1eea4d469791de5dd46780"></span><span class="sig-name descname"><span class="n"><span class="pre">Vectors</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">s</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors7VectorsERj" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Constructs a <a class="reference internal" href="#classVectors"><span class="std std-ref">Vectors</span></a> object with the given size. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> – Reference to the size of the vector. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7VectorsD0Ev">
+<span id="_CPPv3N7VectorsD0Ev"></span><span id="_CPPv2N7VectorsD0Ev"></span><span id="Vectors::~Vectors"></span><span class="target" id="classVectors_1a508b2f445a9c446db4c9aa267b6247e3"></span><span class="sig-name descname"><span class="n"><span class="pre">~Vectors</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7VectorsD0Ev" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Destructor to free allocated memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors7VectorsERK7Vectors">
+<span id="_CPPv3N7Vectors7VectorsERK7Vectors"></span><span id="_CPPv2N7Vectors7VectorsERK7Vectors"></span><span id="Vectors::Vectors__VectorsCR"></span><span class="target" id="classVectors_1ac7c6a902b5ed578ef2154578ed29b15d"></span><span class="sig-name descname"><span class="n"><span class="pre">Vectors</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N7Vectors7VectorsERK7Vectors" title="Vectors::Vectors"><span class="n"><span class="pre">Vectors</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors7VectorsERK7Vectors" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Copy constructor for deep copying another <a class="reference internal" href="#classVectors"><span class="std std-ref">Vectors</span></a> object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> – The vector to be copied. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7VectorsaSERK7Vectors">
+<span id="_CPPv3N7VectorsaSERK7Vectors"></span><span id="_CPPv2N7VectorsaSERK7Vectors"></span><span id="Vectors::assign-operator__VectorsCR"></span><span class="target" id="classVectors_1adf18ad92434940dc74397de4dd2a25d6"></span><a class="reference internal" href="#_CPPv47Vectors" title="Vectors"><span class="n"><span class="pre">Vectors</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv47Vectors" title="Vectors"><span class="n"><span class="pre">Vectors</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7VectorsaSERK7Vectors" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Copy assignment operator for deep copying another <a class="reference internal" href="#classVectors"><span class="std std-ref">Vectors</span></a> object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> – The vector to be assigned. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Reference to the assigned vector. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors14getDataAtIndexEj">
+<span id="_CPPv3N7Vectors14getDataAtIndexEj"></span><span id="_CPPv2N7Vectors14getDataAtIndexEj"></span><span id="Vectors::getDataAtIndex__unsigned-i"></span><span class="target" id="classVectors_1a6e7370b59574123a99346dd5305c2455"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getDataAtIndex</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors14getDataAtIndexEj" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Retrieves the value at a specific index in the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> – The index to access. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The value at the specified index. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors7getSizeEv">
+<span id="_CPPv3N7Vectors7getSizeEv"></span><span id="_CPPv2N7Vectors7getSizeEv"></span><span id="Vectors::getSize"></span><span class="target" id="classVectors_1a414d2d646f0814b9207ddd04b04477db"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors7getSizeEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Gets the size of the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The size of the vector. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors7getDataEv">
+<span id="_CPPv3N7Vectors7getDataEv"></span><span id="_CPPv2N7Vectors7getDataEv"></span><span id="Vectors::getData"></span><span class="target" id="classVectors_1aeb6cdc7ea10e12ffb9badc726ea3f602"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getData</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors7getDataEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Retrieves the pointer to the data array. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pointer to the vector data. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors7setDataERPd">
+<span id="_CPPv3N7Vectors7setDataERPd"></span><span id="_CPPv2N7Vectors7setDataERPd"></span><span id="Vectors::setData__doublePR"></span><span class="target" id="classVectors_1aad7e82117f5a6980ab455764b599830b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setData</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">inputData</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors7setDataERPd" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Sets the vector data using an external array. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputData</strong> – Reference to the pointer of the input data. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors15setValueAtIndexEjd">
+<span id="_CPPv3N7Vectors15setValueAtIndexEjd"></span><span id="_CPPv2N7Vectors15setValueAtIndexEjd"></span><span id="Vectors::setValueAtIndex__unsigned-i.double"></span><span class="target" id="classVectors_1a5db3f0e16469589f9d3345a9d35ea494"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setValueAtIndex</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors15setValueAtIndexEjd" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Sets the value at a specific index. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> – The index where the value should be set. </p></li>
+<li><p><strong>value</strong> – The value to set. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors10setToValueEd">
+<span id="_CPPv3N7Vectors10setToValueEd"></span><span id="_CPPv2N7Vectors10setToValueEd"></span><span id="Vectors::setToValue__double"></span><span class="target" id="classVectors_1a3e4cd646cdea67ddf21086015f838a8b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setToValue</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors10setToValueEd" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Sets all elements of the vector to a given value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – The value to set all elements to. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors3sumEv">
+<span id="_CPPv3N7Vectors3sumEv"></span><span id="_CPPv2N7Vectors3sumEv"></span><span id="Vectors::sum"></span><span class="target" id="classVectors_1a0ccd2e1c1a4d2047699b2ae21b5acbc6"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sum</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors3sumEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Computes the sum of all elements in the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The sum of vector elements. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors6abssumEv">
+<span id="_CPPv3N7Vectors6abssumEv"></span><span id="_CPPv2N7Vectors6abssumEv"></span><span id="Vectors::abssum"></span><span class="target" id="classVectors_1a2cc49188d249ac05afd5691c24ff8d8b"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">abssum</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors6abssumEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Computes the absolute sum of all elements. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The sum of absolute values of all elements. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors4normEv">
+<span id="_CPPv3N7Vectors4normEv"></span><span id="_CPPv2N7Vectors4normEv"></span><span id="Vectors::norm"></span><span class="target" id="classVectors_1a520cd62c7304e8cd23ffb47da60a277f"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">norm</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors4normEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Computes the Euclidean norm (magnitude) of the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The norm of the vector. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors3dotER7Vectors">
+<span id="_CPPv3N7Vectors3dotER7Vectors"></span><span id="_CPPv2N7Vectors3dotER7Vectors"></span><span id="Vectors::dot__VectorsR"></span><span class="target" id="classVectors_1aa5fa17813fd7b3c3b5fd8fdff3d991eb"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dot</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47Vectors" title="Vectors"><span class="n"><span class="pre">Vectors</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors3dotER7Vectors" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Computes the dot product of this vector with another vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> – The other vector to compute the dot product with. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dot product result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors5printEv">
+<span id="_CPPv3N7Vectors5printEv"></span><span id="_CPPv2N7Vectors5printEv"></span><span id="Vectors::print"></span><span class="target" id="classVectors_1a37a927b87cba554a54e6b9c9763da3fe"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">print</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Vectors5printEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints the vector elements to the console. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors4sizeE">
+<span id="_CPPv3N7Vectors4sizeE"></span><span id="_CPPv2N7Vectors4sizeE"></span><span id="Vectors::size__unsigned-i"></span><span class="target" id="classVectors_1ad06004cebf4dc30f8803d73c396dd73a"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><a class="headerlink" href="#_CPPv4N7Vectors4sizeE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The size of the vector. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Vectors4dataE">
+<span id="_CPPv3N7Vectors4dataE"></span><span id="_CPPv2N7Vectors4dataE"></span><span id="Vectors::data__doubleP"></span><span class="target" id="classVectors_1a2b786e67a8aacc479ccdfd793baa9cd7"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><a class="headerlink" href="#_CPPv4N7Vectors4dataE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pointer to the dynamically allocated array of vector elements. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv46Matrix">
+<span id="_CPPv36Matrix"></span><span id="_CPPv26Matrix"></span><span id="Matrix"></span><span class="target" id="classMatrix"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Matrix</span></span></span><a class="headerlink" href="#_CPPv46Matrix" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;linalg.h&gt;</em></div>
+<p>A class representing a 2D matrix with basic operations. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Matrix6MatrixERjRj">
+<span id="_CPPv3N6Matrix6MatrixERjRj"></span><span id="_CPPv2N6Matrix6MatrixERjRj"></span><span id="Matrix::Matrix__unsigned-iR.unsigned-iR"></span><span class="target" id="classMatrix_1af192ec15f84d80b3a1e046f93d005a46"></span><span class="sig-name descname"><span class="n"><span class="pre">Matrix</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">r</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">c</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Matrix6MatrixERjRj" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Constructs a <a class="reference internal" href="#classMatrix"><span class="std std-ref">Matrix</span></a> object with the given dimensions. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> – Reference to the number of rows. </p></li>
+<li><p><strong>c</strong> – Reference to the number of columns. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Matrix6MatrixERK6Matrix">
+<span id="_CPPv3N6Matrix6MatrixERK6Matrix"></span><span id="_CPPv2N6Matrix6MatrixERK6Matrix"></span><span id="Matrix::Matrix__MatrixCR"></span><span class="target" id="classMatrix_1abcf708e864ed3d9db2c3b317c5e529ab"></span><span class="sig-name descname"><span class="n"><span class="pre">Matrix</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N6Matrix6MatrixERK6Matrix" title="Matrix::Matrix"><span class="n"><span class="pre">Matrix</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Matrix6MatrixERK6Matrix" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Copy constructor for deep copying another <a class="reference internal" href="#classMatrix"><span class="std std-ref">Matrix</span></a> object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> – The matrix to be copied. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6MatrixaSERK6Matrix">
+<span id="_CPPv3N6MatrixaSERK6Matrix"></span><span id="_CPPv2N6MatrixaSERK6Matrix"></span><span id="Matrix::assign-operator__MatrixCR"></span><span class="target" id="classMatrix_1a3e40db12ae78b7616ee3f099bb15f13d"></span><a class="reference internal" href="#_CPPv46Matrix" title="Matrix"><span class="n"><span class="pre">Matrix</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv46Matrix" title="Matrix"><span class="n"><span class="pre">Matrix</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6MatrixaSERK6Matrix" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Copy assignment operator for deep copying another <a class="reference internal" href="#classMatrix"><span class="std std-ref">Matrix</span></a> object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> – The matrix to be assigned. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Reference to the assigned matrix. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6MatrixD0Ev">
+<span id="_CPPv3N6MatrixD0Ev"></span><span id="_CPPv2N6MatrixD0Ev"></span><span id="Matrix::~Matrix"></span><span class="target" id="classMatrix_1a9b1c3627f573d78a2f08623fdfef990f"></span><span class="sig-name descname"><span class="n"><span class="pre">~Matrix</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6MatrixD0Ev" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Destructor to free allocated memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Matrix8getValueEjj">
+<span id="_CPPv3N6Matrix8getValueEjj"></span><span id="_CPPv2N6Matrix8getValueEjj"></span><span id="Matrix::getValue__unsigned-i.unsigned-i"></span><span class="target" id="classMatrix_1a3a86dbd100fb389b5122bf2dc7159058"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getValue</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">j</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Matrix8getValueEjj" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Retrieves the value at a specific row and column. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> – The row index. </p></li>
+<li><p><strong>j</strong> – The column index. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The value at the specified position. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Matrix7getSizeEv">
+<span id="_CPPv3N6Matrix7getSizeEv"></span><span id="_CPPv2N6Matrix7getSizeEv"></span><span id="Matrix::getSize"></span><span class="target" id="classMatrix_1ad6810e0bc4061dd3492a99aa60107018"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Matrix7getSizeEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Gets the total number of elements in the matrix. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The total number of elements (rows * cols). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Matrix8setValueEjjd">
+<span id="_CPPv3N6Matrix8setValueEjjd"></span><span id="_CPPv2N6Matrix8setValueEjjd"></span><span id="Matrix::setValue__unsigned-i.unsigned-i.double"></span><span class="target" id="classMatrix_1ab6f7182f348f2bfaa3997c7db6f4d7bc"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setValue</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">j</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Matrix8setValueEjjd" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Sets the value at a specific row and column. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> – The row index. </p></li>
+<li><p><strong>j</strong> – The column index. </p></li>
+<li><p><strong>value</strong> – The value to be set. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Matrix3dotER7Vectors">
+<span id="_CPPv3N6Matrix3dotER7Vectors"></span><span id="_CPPv2N6Matrix3dotER7Vectors"></span><span id="Matrix::dot__VectorsR"></span><span class="target" id="classMatrix_1a897e7842072393ec3c5f6137ce1e3aaa"></span><a class="reference internal" href="#_CPPv47Vectors" title="Vectors"><span class="n"><span class="pre">Vectors</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dot</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47Vectors" title="Vectors"><span class="n"><span class="pre">Vectors</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Matrix3dotER7Vectors" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Computes the matrix-vector multiplication. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vec</strong> – The vector to multiply with the matrix. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new <a class="reference internal" href="#classVectors"><span class="std std-ref">Vectors</span></a> object containing the result of the multiplication. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Matrix5printEv">
+<span id="_CPPv3N6Matrix5printEv"></span><span id="_CPPv2N6Matrix5printEv"></span><span id="Matrix::print"></span><span class="target" id="classMatrix_1a99ba97122b8fdd54e95290caf80fc8e2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">print</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Matrix5printEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints the matrix elements to the console. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6Matrix4rowsE">
+<span id="_CPPv3N6Matrix4rowsE"></span><span id="_CPPv2N6Matrix4rowsE"></span><span id="Matrix::rows__i"></span><span class="target" id="classMatrix_1a994b1578e9a64d5cc3c4d0b11d7532a9"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rows</span></span></span><a class="headerlink" href="#_CPPv4N6Matrix4rowsE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6Matrix4colsE">
+<span id="_CPPv3N6Matrix4colsE"></span><span id="_CPPv2N6Matrix4colsE"></span><span id="Matrix::cols__i"></span><span class="target" id="classMatrix_1a2067cc7ed367cc427cd869b3e1074ad7"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cols</span></span></span><a class="headerlink" href="#_CPPv4N6Matrix4colsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Number of rows and columns in the matrix. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6Matrix4dataE">
+<span id="_CPPv3N6Matrix4dataE"></span><span id="_CPPv2N6Matrix4dataE"></span><span id="Matrix::data__doubleP"></span><span class="target" id="classMatrix_1a7097cbd5ded96225e7f1fecb1c39936f"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><a class="headerlink" href="#_CPPv4N6Matrix4dataE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pointer to the dynamically allocated array of matrix elements. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Helpers</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../scripts/index.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Implementation example scripts</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, Mukund Yedunuthala</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/shibuya.js?v=55e26b35"></script></body>
+</html>

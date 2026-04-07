@@ -1,0 +1,6 @@
+Local Regression
+================
+.. automodule:: localRegression
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,6 @@
+Analytical Solution
+===================
+.. automodule:: analyticalSolution
+   :members:
+   :undoc-members:
+   :show-inheritance:

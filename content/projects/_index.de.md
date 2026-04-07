@@ -10,4 +10,5 @@ quick_navigation_buttons = true
 show_remote_changes = true
 show_date = false
 toc = false
+social_media_card = "img/social_cards/de_projects.jpg"
 +++

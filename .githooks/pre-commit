@@ -1,0 +1,99 @@
+#!/usr/bin/bash
+
+# 1. MOVE FUNCTIONS TO TOP
+function error_exit() {
+    echo "ERROR: $1" >&2
+    exit "${2:-1}"
+}
+
+# Check if the script is being run from the root of the repo.
+if [[ ! $(git rev-parse --show-toplevel) == $(pwd) ]]; then
+    error_exit "This script must be run from the root of the repo."
+fi
+
+function extract_date() {
+    local file="$1"
+    local field="$2"
+    # Added [[:space:]]* to handle variations in TOML spacing
+    grep -m 1 "^$field[[:space:]]*=[[:space:]]*" "$file" | sed -e "s/^$field[[:space:]]*=[[:space:]]*//" -e 's/"//g' -e "s/'//g" -e 's/ *$//'
+}
+
+function has_body_changes() {
+    local file="$1"
+    local count=0
+
+    # Zola front matter is TOML between +++ blocks.
+    # We check if there are changes (indicators % or &) after the second +++
+    diff_output=$(git diff --unified=999 --cached --output-indicator-new='%' --output-indicator-old='&' "$file")
+
+    while read -r line; do
+        if [[ "$line" =~ ^\+\+\+$ ]]; then
+            ((count++))
+        elif [[ $count -ge 2 ]]; then
+            if [[ "$line" =~ ^[\%\&] ]]; then
+                return 0 # Body change detected
+            fi
+        fi
+    done <<< "$diff_output"
+    return 1
+}
+
+function generate_and_commit_card() {
+    local file=$1
+    # Ensure the directory exists for Zola static assets
+    mkdir -p static/img/social_cards
+
+    social_media_card=$(./social-cards-zola -o static/img/social_cards -b http://127.0.0.1:1111 -u -p -i "$file") || return 1
+
+    git add "$social_media_card"
+    git add "$file"
+}
+
+export -f generate_and_commit_card
+
+# 2. CAPTURE MODIFIED FILES
+mapfile -t modified_md_files < <(git diff --cached --name-only --diff-filter=M | grep -Ei '\.md$')
+
+processed_files=()
+
+for file in "${modified_md_files[@]}"; do
+    # Skip if only front matter changed (standard Zola behavior)
+    if ! has_body_changes "$file"; then
+        continue
+    fi
+
+    # Zola-friendly date
+    last_modified_date=$(date -r "$file" +'%Y-%m-%d')
+    date_value=$(extract_date "$file" "date")
+
+    if [[ "$last_modified_date" == "$date_value" ]]; then
+        continue
+    fi
+
+    # Update/Insert "updated" field in TOML
+    if awk -v d="$last_modified_date" '
+    BEGIN { done=0 }
+    /^date =/ && !done {
+        print $0
+        getline next_line
+        if (next_line !~ /^updated =/) {
+            print "updated = " d
+            print next_line
+        } else {
+            print "updated = " d
+        }
+        done=1; next
+    }
+    { print }' "$file" > "${file}.tmp"; then
+        mv "${file}.tmp" "$file"
+        git add "$file"
+        processed_files+=("$file")
+    else
+        rm -f "${file}.tmp"
+    fi
+done
+
+# 3. RUN PARALLEL ON PROCESSED FILES
+if [[ ${#processed_files[@]} -gt 0 ]]; then
+    printf "%s\n" "${processed_files[@]}" | parallel -j 8 generate_and_commit_card
+fi

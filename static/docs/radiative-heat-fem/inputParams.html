@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Input Parameters - Modeling of radiative heat-exchange using finite element method 1.0.0 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="GMSH Parser" href="parser.html" /><link rel="prev" title="Helper" href="helper.html" />
+      <link rel="canonical" href="https://mukund-yedunuthala.de/docs/radiative-heat-fem/inputParams.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=10d1008b" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mukund-yedunuthala.de/docs/radiative-heat-fem/inputParams.html"/>
+<meta property="og:title" content="Input Parameters"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      
+      
+      <strong>Modeling of radiative heat-exchange using finite element method</strong>
+    </a>
+    <div class="sy-head-nav" id="HeadNav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="HeadNav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analyticalSolution.html">Analytical Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html">Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boundaryConditions.html">Boundary Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elementRoutine.html">Element Routine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html">Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Input Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html">GMSH Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solver.html">Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewFactor.html">View Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quadrature.html">Quadrature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewFactorMain.html">Main file for View Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="embreeComputation.html">Embree</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="test_assembly.html">Test Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_shape_functions.html">Test Shape Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_quadrature.html">Test Quadrature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_gradients.html">Test Gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_entities.html">Test Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_parser.html">Test Parser</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#inputParams.InputParameters"><code class="docutils literal notranslate"><span class="pre">InputParameters</span></code></a><ul>
+<li><a class="reference internal" href="#inputParams.InputParameters.CONFIG_FILE"><code class="docutils literal notranslate">CONFIG_FILE</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.MESH_PATH"><code class="docutils literal notranslate">MESH_PATH</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.NDIM"><code class="docutils literal notranslate">NDIM</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.ambient_temperature"><code class="docutils literal notranslate">ambient_temperature</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.boundary_temperatures"><code class="docutils literal notranslate">boundary_temperatures</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.conductivity"><code class="docutils literal notranslate">conductivity</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.convection_computation"><code class="docutils literal notranslate">convection_computation</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.density"><code class="docutils literal notranslate">density</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.emissivity"><code class="docutils literal notranslate">emissivity</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.end_time"><code class="docutils literal notranslate">end_time</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.essential_boundary_tags"><code class="docutils literal notranslate">essential_boundary_tags</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.heat_capacity"><code class="docutils literal notranslate">heat_capacity</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.heat_coefficient"><code class="docutils literal notranslate">heat_coefficient</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.heat_flux"><code class="docutils literal notranslate">heat_flux</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.initial_temperature"><code class="docutils literal notranslate">initial_temperature</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.internal_heat"><code class="docutils literal notranslate">internal_heat</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.natural_boundary_tags"><code class="docutils literal notranslate">natural_boundary_tags</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.parse_config"><code class="docutils literal notranslate">parse_config()</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.radiation"><code class="docutils literal notranslate">radiation</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.source_temperature"><code class="docutils literal notranslate">source_temperature</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.start_time"><code class="docutils literal notranslate">start_time</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.steady_state"><code class="docutils literal notranslate">steady_state</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.stefan_boltzmann_constant"><code class="docutils literal notranslate">stefan_boltzmann_constant</span></code></a></li>
+<li><a class="reference internal" href="#inputParams.InputParameters.time_step"><code class="docutils literal notranslate">time_step</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6"><div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">Modeling of radiative heat-exchange using finite element method</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="modules.html"><span itemprop="name">Modules</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Input Parameters</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-inputParams">
+<span id="input-parameters"></span><h1>Input Parameters<a class="headerlink" href="#module-inputParams" title="Link to this heading">¶</a></h1>
+<p><strong>Parses input parameters to be used in the project</strong></p>
+<ul class="simple">
+<li><p>This file is a part of the coursework module <em>Personal Programming Project   (PPP)</em> in <em>M.Sc. Computational Materials Science, Technische Universität   Bergakademie Freiberg.</em></p></li>
+<li><p>This file is a part of the project <strong>Modeling of radiative heat-exchange   using finite element method</strong></p></li>
+</ul>
+<p>This file parses the input parameters used in the project.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="inputParams.InputParameters">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inputParams.</span></span><span class="sig-name descname"><span class="pre">InputParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CONFIG_FILE</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inputParams.InputParameters" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to handle input parameters.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="inputParams.InputParameters.CONFIG_FILE">
+<span class="sig-name descname"><span class="pre">CONFIG_FILE</span></span><a class="headerlink" href="#inputParams.InputParameters.CONFIG_FILE" title="Link to this definition">¶</a></dt>
+<dd><p>Path to the config file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pathlib.Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.MESH_PATH">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MESH_PATH</span></span><a class="headerlink" href="#inputParams.InputParameters.MESH_PATH" title="Link to this definition">¶</a></dt>
+<dd><p>Path to the mesh file.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.NDIM">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NDIM</span></span><a class="headerlink" href="#inputParams.InputParameters.NDIM" title="Link to this definition">¶</a></dt>
+<dd><p>Number of dimensions of the problem.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.ambient_temperature">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ambient_temperature</span></span><a class="headerlink" href="#inputParams.InputParameters.ambient_temperature" title="Link to this definition">¶</a></dt>
+<dd><p>Ambient temperature also relevant to computing
+convection natural boundary condition, if given.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.boundary_temperatures">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">boundary_temperatures</span></span><a class="headerlink" href="#inputParams.InputParameters.boundary_temperatures" title="Link to this definition">¶</a></dt>
+<dd><p>Essential boundary condition values, <strong>must</strong> match
+with <code class="xref py py-attr docutils literal notranslate"><span class="pre">boundary_tags</span></code>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.conductivity">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">conductivity</span></span><a class="headerlink" href="#inputParams.InputParameters.conductivity" title="Link to this definition">¶</a></dt>
+<dd><p>Thermal conductivity of the material, assumed to be
+of an isotropic material, hence a constant.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.convection_computation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">convection_computation</span></span><a class="headerlink" href="#inputParams.InputParameters.convection_computation" title="Link to this definition">¶</a></dt>
+<dd><p>Boolean value to indicate whether to include
+convection terms.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.density">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">density</span></span><a class="headerlink" href="#inputParams.InputParameters.density" title="Link to this definition">¶</a></dt>
+<dd><p>Density of the material under consideration, assumed to be
+constant across the material.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.emissivity">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">emissivity</span></span><a class="headerlink" href="#inputParams.InputParameters.emissivity" title="Link to this definition">¶</a></dt>
+<dd><p>Emissivity of a material, assumed to be constant
+throughout.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.end_time">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">end_time</span></span><a class="headerlink" href="#inputParams.InputParameters.end_time" title="Link to this definition">¶</a></dt>
+<dd><p>Value of time at the end of the evaluation.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.essential_boundary_tags">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">essential_boundary_tags</span></span><a class="headerlink" href="#inputParams.InputParameters.essential_boundary_tags" title="Link to this definition">¶</a></dt>
+<dd><p>Tags of entities upon which essential boundary
+conditions are to be applied.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.heat_capacity">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">heat_capacity</span></span><a class="headerlink" href="#inputParams.InputParameters.heat_capacity" title="Link to this definition">¶</a></dt>
+<dd><p>Specific heat capacity of the material, assumed to be constant
+throughout the material.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.heat_coefficient">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">heat_coefficient</span></span><a class="headerlink" href="#inputParams.InputParameters.heat_coefficient" title="Link to this definition">¶</a></dt>
+<dd><p>Heat transfer coefficient, relevant to computing
+convection term in case convection natural boundary
+condition is given.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.heat_flux">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">heat_flux</span></span><a class="headerlink" href="#inputParams.InputParameters.heat_flux" title="Link to this definition">¶</a></dt>
+<dd><p>Heat flux as a constant, if present as a natural
+boundary condition.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.initial_temperature">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">initial_temperature</span></span><a class="headerlink" href="#inputParams.InputParameters.initial_temperature" title="Link to this definition">¶</a></dt>
+<dd><p>Initial temperature of the body, relevant in a transient
+analysis.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.internal_heat">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">internal_heat</span></span><a class="headerlink" href="#inputParams.InputParameters.internal_heat" title="Link to this definition">¶</a></dt>
+<dd><p>Value of internal heat generation as a constant, if it
+exists.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.natural_boundary_tags">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">natural_boundary_tags</span></span><a class="headerlink" href="#inputParams.InputParameters.natural_boundary_tags" title="Link to this definition">¶</a></dt>
+<dd><p>Tags of entities upon which natural boundary
+conditions are to be applied.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inputParams.InputParameters.parse_config">
+<span class="sig-name descname"><span class="pre">parse_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inputParams.InputParameters.parse_config" title="Link to this definition">¶</a></dt>
+<dd><p>Parses given config file.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.radiation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">radiation</span></span><a class="headerlink" href="#inputParams.InputParameters.radiation" title="Link to this definition">¶</a></dt>
+<dd><p>Flag for radiation.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.source_temperature">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">source_temperature</span></span><a class="headerlink" href="#inputParams.InputParameters.source_temperature" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.start_time">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start_time</span></span><a class="headerlink" href="#inputParams.InputParameters.start_time" title="Link to this definition">¶</a></dt>
+<dd><p>Value of time at the start of the evaluation.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.steady_state">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">steady_state</span></span><a class="headerlink" href="#inputParams.InputParameters.steady_state" title="Link to this definition">¶</a></dt>
+<dd><p>Boolean value to indicate whether the config
+is for a steady state problem.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.stefan_boltzmann_constant">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stefan_boltzmann_constant</span></span><a class="headerlink" href="#inputParams.InputParameters.stefan_boltzmann_constant" title="Link to this definition">¶</a></dt>
+<dd><p>Stefan-Boltzmann constant of proportionality in
+Stefan-Boltzmann law for black body radiation.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="inputParams.InputParameters.time_step">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">time_step</span></span><a class="headerlink" href="#inputParams.InputParameters.time_step" title="Link to this definition">¶</a></dt>
+<dd><p>Time step value, used to evaluate time integration
+computations as well.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="helper.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Helper</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="parser.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">GMSH Parser</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, Mukund Yedunuthala</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/shibuya.js?v=55e26b35"></script></body>
+</html>
