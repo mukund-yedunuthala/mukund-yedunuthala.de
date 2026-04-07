@@ -1,0 +1,6 @@
+Quadrature
+==========
+.. automodule:: quadrature
+   :members:
+   :undoc-members:
+   :show-inheritance:

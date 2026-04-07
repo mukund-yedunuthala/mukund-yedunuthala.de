@@ -1,0 +1,6 @@
+Gradient Boosting Machine
+=========================
+.. automodule:: gradientMachine
+   :members:
+   :undoc-members:
+   :show-inheritance:

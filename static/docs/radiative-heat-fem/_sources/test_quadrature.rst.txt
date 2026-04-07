@@ -1,0 +1,5 @@
+Test Quadrature
+===============
+.. automodule:: test_quadrature
+    :members:
+    :undoc-members:

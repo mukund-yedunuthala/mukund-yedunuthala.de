@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Element Routine - Modeling of radiative heat-exchange using finite element method 1.0.0 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Entities" href="entities.html" /><link rel="prev" title="Boundary Conditions" href="boundaryConditions.html" />
+      <link rel="canonical" href="https://mukund-yedunuthala.de/docs/radiative-heat-fem/elementRoutine.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=10d1008b" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mukund-yedunuthala.de/docs/radiative-heat-fem/elementRoutine.html"/>
+<meta property="og:title" content="Element Routine"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      
+      
+      <strong>Modeling of radiative heat-exchange using finite element method</strong>
+    </a>
+    <div class="sy-head-nav" id="HeadNav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="HeadNav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analyticalSolution.html">Analytical Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html">Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boundaryConditions.html">Boundary Conditions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Element Routine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helper.html">Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputParams.html">Input Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html">GMSH Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solver.html">Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewFactor.html">View Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quadrature.html">Quadrature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewFactorMain.html">Main file for View Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="embreeComputation.html">Embree</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="test_assembly.html">Test Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_shape_functions.html">Test Shape Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_quadrature.html">Test Quadrature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_gradients.html">Test Gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_entities.html">Test Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_parser.html">Test Parser</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine"><code class="docutils literal notranslate"><span class="pre">ElementRoutine</span></code></a><ul>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.elements"><code class="docutils literal notranslate">elements</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.edgeNodes"><code class="docutils literal notranslate">edgeNodes</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.input_parameters"><code class="docutils literal notranslate">input_parameters</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.nodes"><code class="docutils literal notranslate">nodes</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.B"><code class="docutils literal notranslate">B</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.J"><code class="docutils literal notranslate">J</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.N"><code class="docutils literal notranslate">N</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.compute_N"><code class="docutils literal notranslate">compute_N()</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.compute_boundary_nodes"><code class="docutils literal notranslate">compute_boundary_nodes()</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.compute_dN"><code class="docutils literal notranslate">compute_dN()</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.compute_element_routine"><code class="docutils literal notranslate">compute_element_routine()</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.compute_gradient_matrix"><code class="docutils literal notranslate">compute_gradient_matrix()</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.compute_jacobian"><code class="docutils literal notranslate">compute_jacobian()</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.compute_quadrature"><code class="docutils literal notranslate">compute_quadrature()</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.dN"><code class="docutils literal notranslate">dN</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.detJ"><code class="docutils literal notranslate">detJ</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.element_capacitance"><code class="docutils literal notranslate">element_capacitance</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.element_stiffness"><code class="docutils literal notranslate">element_stiffness</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.load_vector"><code class="docutils literal notranslate">load_vector</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.quadrature_points"><code class="docutils literal notranslate">quadrature_points</span></code></a></li>
+<li><a class="reference internal" href="#elementRoutine.ElementRoutine.quadrature_weights"><code class="docutils literal notranslate">quadrature_weights</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6"><div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">Modeling of radiative heat-exchange using finite element method</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="modules.html"><span itemprop="name">Modules</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Element Routine</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-elementRoutine">
+<span id="element-routine"></span><h1>Element Routine<a class="headerlink" href="#module-elementRoutine" title="Link to this heading">¶</a></h1>
+<p><strong>Defines element routine for the model.</strong></p>
+<ul class="simple">
+<li><p>This file is a part of the coursework module <em>Personal Programming Project   (PPP)</em> in <em>M.Sc. Computational Materials Science, Technische Universität   Bergakademie Freiberg.</em></p></li>
+<li><p>This file is a part of the project <strong>Modeling of radiative heat-exchange   using finite element method</strong></p></li>
+</ul>
+<p>This file consists of <a class="reference internal" href="#elementRoutine.ElementRoutine" title="elementRoutine.ElementRoutine"><code class="xref py py-class docutils literal notranslate"><span class="pre">ElementRoutine</span></code></a> that computes the element
+matrices after application of appropriate shape functions, as well as
+Gaussian Quadrature scheme.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elementRoutine.</span></span><span class="sig-name descname"><span class="pre">ElementRoutine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="parser.html#parser.Mesh" title="parser.Mesh"><span class="pre">Mesh</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">elem_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#elementRoutine.ElementRoutine" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for element routine computations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<a class="reference internal" href="parser.html#parser.Mesh" title="parser.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">parser.Mesh</span></code></a>) – Mesh object consisting of all information parsed from
+mesh file.</p></li>
+<li><p><strong>elem_num</strong> (<em>int</em>) – Element number as labeled in the mesh file.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.elements">
+<span class="sig-name descname"><span class="pre">elements</span></span><a class="headerlink" href="#elementRoutine.ElementRoutine.elements" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary consisting of all elements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.edgeNodes">
+<span class="sig-name descname"><span class="pre">edgeNodes</span></span><a class="headerlink" href="#elementRoutine.ElementRoutine.edgeNodes" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary consisting of tags of nodes on the boundaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.input_parameters">
+<span class="sig-name descname"><span class="pre">input_parameters</span></span><a class="headerlink" href="#elementRoutine.ElementRoutine.input_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Object consisting of all input parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="inputParams.html#inputParams.InputParameters" title="inputParams.InputParameters"><code class="xref py py-class docutils literal notranslate"><span class="pre">inputParams.InputParameters</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.nodes">
+<span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#elementRoutine.ElementRoutine.nodes" title="Link to this definition">¶</a></dt>
+<dd><p>Nodes of the element in consideration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.B">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">B</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array</span></em><a class="headerlink" href="#elementRoutine.ElementRoutine.B" title="Link to this definition">¶</a></dt>
+<dd><p>Value of gradient (B) matrix at a given quadrature
+point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.J">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">J</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array</span></em><a class="headerlink" href="#elementRoutine.ElementRoutine.J" title="Link to this definition">¶</a></dt>
+<dd><p>Value of Jacobian at a given quadrature point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.N">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">N</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array</span></em><a class="headerlink" href="#elementRoutine.ElementRoutine.N" title="Link to this definition">¶</a></dt>
+<dd><p>Shape function array at a given quadrature point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.compute_N">
+<span class="sig-name descname"><span class="pre">compute_N</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#elementRoutine.ElementRoutine.compute_N" title="Link to this definition">¶</a></dt>
+<dd><p>Method to compute shape functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>q_points</strong> (<em>numpy.array</em>) – Quadrature point.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.compute_boundary_nodes">
+<span class="sig-name descname"><span class="pre">compute_boundary_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="headerlink" href="#elementRoutine.ElementRoutine.compute_boundary_nodes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.compute_dN">
+<span class="sig-name descname"><span class="pre">compute_dN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#elementRoutine.ElementRoutine.compute_dN" title="Link to this definition">¶</a></dt>
+<dd><p>Method to compute derivative of shape function
+with respect to quadrature point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>q_points</strong> (<em>numpy.array</em>) – Quadrature point under consideration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.compute_element_routine">
+<span class="sig-name descname"><span class="pre">compute_element_routine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#elementRoutine.ElementRoutine.compute_element_routine" title="Link to this definition">¶</a></dt>
+<dd><p>Method for computation of element contributions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.compute_gradient_matrix">
+<span class="sig-name descname"><span class="pre">compute_gradient_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#elementRoutine.ElementRoutine.compute_gradient_matrix" title="Link to this definition">¶</a></dt>
+<dd><p>Method to compute gradient (B) matrix at a given
+quadrature point.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.compute_jacobian">
+<span class="sig-name descname"><span class="pre">compute_jacobian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#elementRoutine.ElementRoutine.compute_jacobian" title="Link to this definition">¶</a></dt>
+<dd><p>Method to compute jacobian value at a quadrature point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>q_points</strong> (<em>numpy.array</em>) – Quadrature point in consideration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.compute_quadrature">
+<span class="sig-name descname"><span class="pre">compute_quadrature</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#elementRoutine.ElementRoutine.compute_quadrature" title="Link to this definition">¶</a></dt>
+<dd><p>Method to set quadrature points and weights
+depending on the dimensions of the mesh.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.dN">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dN</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array</span></em><a class="headerlink" href="#elementRoutine.ElementRoutine.dN" title="Link to this definition">¶</a></dt>
+<dd><p>Value of shape function derivative at a quadrature point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.detJ">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">detJ</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#elementRoutine.ElementRoutine.detJ" title="Link to this definition">¶</a></dt>
+<dd><p>Value of determinant of jacobian at a given quadrature point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.element_capacitance">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element_capacitance</span></span><a class="headerlink" href="#elementRoutine.ElementRoutine.element_capacitance" title="Link to this definition">¶</a></dt>
+<dd><p>Value of the capacitance matrix for the element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.element_stiffness">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element_stiffness</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array</span></em><a class="headerlink" href="#elementRoutine.ElementRoutine.element_stiffness" title="Link to this definition">¶</a></dt>
+<dd><p>Value of the stiffness matrix for the element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.load_vector">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_vector</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array</span></em><a class="headerlink" href="#elementRoutine.ElementRoutine.load_vector" title="Link to this definition">¶</a></dt>
+<dd><p>Value of the load vector for the element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.quadrature_points">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">quadrature_points</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array</span></em><a class="headerlink" href="#elementRoutine.ElementRoutine.quadrature_points" title="Link to this definition">¶</a></dt>
+<dd><p>Gaussian quadrature points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="elementRoutine.ElementRoutine.quadrature_weights">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">quadrature_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array</span></em><a class="headerlink" href="#elementRoutine.ElementRoutine.quadrature_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Gaussian quadrature weights</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="boundaryConditions.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Boundary Conditions</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="entities.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Entities</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, Mukund Yedunuthala</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/shibuya.js?v=55e26b35"></script></body>
+</html>

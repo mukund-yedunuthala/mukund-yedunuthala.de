@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="violet" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Local Regression - Gradient Boosting Machine with Local Regression weak learner 1.0 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Local Regression Simplified" href="localRegressionSimple.html" /><link rel="prev" title="Hoelder Means" href="hoelderMeans.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=10d1008b" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Local Regression"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      
+      
+      <strong>Gradient Boosting Machine with Local Regression weak learner</strong>
+    </a>
+    <div class="sy-head-nav" id="HeadNav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="HeadNav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Source</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dataProcessing.html">Data Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hoelderMeans.html">Hoelder Means</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Local Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="localRegressionSimple.html">Local Regression Simplified</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gradientMachine.html">Gradient Boosting Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html">Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="train.html">Main</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#localRegression.LocalRegression"><code class="docutils literal notranslate"><span class="pre">LocalRegression</span></code></a><ul>
+<li><a class="reference internal" href="#localRegression.LocalRegression.alpha"><code class="docutils literal notranslate">alpha</span></code></a></li>
+<li><a class="reference internal" href="#localRegression.LocalRegression.degree"><code class="docutils literal notranslate">degree</span></code></a></li>
+<li><a class="reference internal" href="#localRegression.LocalRegression.eval_cart_prod"><code class="docutils literal notranslate">eval_cart_prod()</span></code></a></li>
+<li><a class="reference internal" href="#localRegression.LocalRegression.fit"><code class="docutils literal notranslate">fit()</span></code></a></li>
+<li><a class="reference internal" href="#localRegression.LocalRegression.fit_polynomial"><code class="docutils literal notranslate">fit_polynomial()</span></code></a></li>
+<li><a class="reference internal" href="#localRegression.LocalRegression.predict"><code class="docutils literal notranslate">predict()</span></code></a></li>
+<li><a class="reference internal" href="#localRegression.LocalRegression.tricubic_weights"><code class="docutils literal notranslate">tricubic_weights()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6"><div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">Gradient Boosting Machine with Local Regression weak learner</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="modules.html"><span itemprop="name">Source</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Local Regression</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-localRegression">
+<span id="local-regression"></span><h1>Local Regression<a class="headerlink" href="#module-localRegression" title="Link to this heading">¶</a></h1>
+<p><strong>Implementation of Multi-variate local polynomial regression.</strong></p>
+<ul class="simple">
+<li><p>This file is a part of <em>Personal Programming Project (PPP)</em> coursework in Computational Materials Science (CMS) M.Sc. course in <em>Technische Universität Bergakademie Freiberg.</em></p></li>
+<li><p>This file is a part of the project titled <strong>Application of statistical learning to predict material properties.</strong></p></li>
+<li><p>For a given number of data points, the algorithm fits a polynomial of given degree to the data points in a specified neighbourhood.</p></li>
+<li><p>Given response variables and predictor variables, this can be used to estimate a regression function.</p></li>
+<li><p>At fitting points the underlying function is assumed to be smooth and k-times differentiable to fit a polynomial of degree k.</p></li>
+</ul>
+<p class="rubric">References</p>
+<p>Cleveland, W.S. (1979) “Robust Locally Weighted Regression
+and Smoothing Scatterplots”. Journal of the American Statistical
+Association 74 (368): 829-836.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="localRegression.LocalRegression">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">localRegression.</span></span><span class="sig-name descname"><span class="pre">LocalRegression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#localRegression.LocalRegression" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Multi-variate local polynomial regression.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">:meth:`tricubic_weights`</span> <span class="pre">:</span> <span class="pre">Method</span> <span class="pre">that</span> <span class="pre">computes</span> <span class="pre">the</span> <span class="pre">weights</span> <span class="pre">from</span> <span class="pre">the</span></span></dt>
+<dd><p>normalized distances within the window. This method specifically
+returns values of tricube weighting function evaluation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">:meth:`eval_cart_prod`</span> <span class="pre">:</span> <span class="pre">Method</span> <span class="pre">that</span> <span class="pre">utilizes</span> <span class="pre">itertools</span> <span class="pre">to</span> <span class="pre">build</span></span></dt>
+<dd><p>bases that would later be used in least squares method to estimate
+the function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">:meth:`fit_polynomial`</span> <span class="pre">:</span> <span class="pre">Method</span> <span class="pre">that</span> <span class="pre">uses</span> <span class="pre">NumPy's</span> <span class="pre">least</span> <span class="pre">squares</span> <span class="pre">method</span> <span class="pre">to</span></span></dt>
+<dd><p>output the data matrix that is eventually used to
+evaluate the predictor variable at that point.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">:meth:`fit`</span> <span class="pre">:</span> <span class="pre">Method</span> <span class="pre">that</span> <span class="pre">provides</span> <span class="pre">the</span> <span class="pre">initial</span> <span class="pre">wrapper</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">methods</span></span></dt>
+<dd><p>mentioned above.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">:meth:`predict`</span> <span class="pre">:</span> <span class="pre">Method</span> <span class="pre">that</span> <span class="pre">utilizes</span> <span class="pre">the</span> <span class="pre">learned</span> <span class="pre">data</span> <span class="pre">matrix</span> <span class="pre">to</span></span></dt>
+<dd><p>evaluate the predictor variables.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="localRegression.LocalRegression.alpha">
+<span class="sig-name descname"><span class="pre">alpha</span></span><a class="headerlink" href="#localRegression.LocalRegression.alpha" title="Link to this definition">¶</a></dt>
+<dd><p>Fraction of data to be used while estimating polynomial.
+Value must be between 0 or 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="localRegression.LocalRegression.degree">
+<span class="sig-name descname"><span class="pre">degree</span></span><a class="headerlink" href="#localRegression.LocalRegression.degree" title="Link to this definition">¶</a></dt>
+<dd><p>Degree of the polynomial to be fit to given data.
+Defaults to 1, corresponding to linear polynomial, in this particular
+implementation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="localRegression.LocalRegression.eval_cart_prod">
+<span class="sig-name descname"><span class="pre">eval_cart_prod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#localRegression.LocalRegression.eval_cart_prod" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="localRegression.LocalRegression.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel=&lt;function</span> <span class="pre">LocalRegression.tricubic_weights&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#localRegression.LocalRegression.fit" title="Link to this definition">¶</a></dt>
+<dd><p>Method that performs multi-variate local polynomial regression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kernel</strong> (<em>function</em>) – Weighting function to be used during this evaluation. Default is             tricubic weighting function as described in references. These are             expected to give higher weight to observations near the smoothing             window and zero weight to those outside.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>output_values</strong> – All values of fit polynomial according to given parameters. Can be             interpolated to evaluate for newer data points.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="localRegression.LocalRegression.fit_polynomial">
+<span class="sig-name descname"><span class="pre">fit_polynomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#localRegression.LocalRegression.fit_polynomial" title="Link to this definition">¶</a></dt>
+<dd><p>Method that performs computationally intensive task to return         the polynomial value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>list</em><em> or </em><em>array</em>) – Predictor variables ‘X’.</p></li>
+<li><p><strong>y</strong> (<em>list</em><em> or </em><em>array</em>) – Response variables ‘Y’.</p></li>
+<li><p><strong>x_values</strong> (<em>list</em><em> or </em><em>array</em>) – Values of x at which the polynomial is fit.</p></li>
+<li><p><strong>weights</strong> (<em>list</em><em> or </em><em>array</em>) – Weights assigned to corresponding data points in the neighbourhood.</p></li>
+<li><p><strong>degree</strong> (<em>int</em>) – Degree of polynomial being fit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>scalar</strong> – The fitted response variable ‘Y’ which can be interpolated to predict             for newer data points.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="localRegression.LocalRegression.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">design_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#localRegression.LocalRegression.predict" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="localRegression.LocalRegression.tricubic_weights">
+<span class="sig-name descname"><span class="pre">tricubic_weights</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#localRegression.LocalRegression.tricubic_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Method that assign weights to points in the local neighbourhood         of x-values.</p>
+<p>It provides more weight to observations whose value is closer         to the given point, and less weight to observations that are         further away.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>list</em><em> or </em><em>array</em>) – Weight function is dependent on the distance in the neighbourhood,             with it being zero outside of the local neighbourhood. This             contains the distances evaluated earlier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>weights</strong> – Assigned weights to the corresponding data points in the vicinity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="hoelderMeans.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Hoelder Means</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="localRegressionSimple.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Local Regression Simplified</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, Mukund Yedunuthala</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/shibuya.js?v=55e26b35"></script></body>
+</html>

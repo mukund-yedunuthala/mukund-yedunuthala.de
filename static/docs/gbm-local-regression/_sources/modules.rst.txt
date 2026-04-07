@@ -1,0 +1,14 @@
+Source
+======
+
+.. toctree::
+   :maxdepth: 4
+
+   dataProcessing
+   hoelderMeans
+   localRegression
+   localRegressionSimple
+   gradientMachine
+   plot
+   profiler
+   train

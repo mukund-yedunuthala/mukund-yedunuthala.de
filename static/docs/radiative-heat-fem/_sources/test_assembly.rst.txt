@@ -1,0 +1,5 @@
+Test Assembly
+=============
+.. automodule:: test_assembly
+    :members:
+    :undoc-members:

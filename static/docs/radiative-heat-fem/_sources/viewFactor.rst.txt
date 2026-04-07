@@ -1,0 +1,6 @@
+View Factor
+===========
+.. automodule:: viewFactor
+   :members:
+   :undoc-members:
+   :show-inheritance:

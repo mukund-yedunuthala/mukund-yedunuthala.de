@@ -1,0 +1,6 @@
+Input Parameters
+================
+.. automodule:: inputParams
+   :members:
+   :undoc-members:
+   :show-inheritance:

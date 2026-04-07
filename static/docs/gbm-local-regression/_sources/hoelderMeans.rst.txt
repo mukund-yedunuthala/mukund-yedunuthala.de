@@ -1,0 +1,6 @@
+Hoelder Means
+=============
+.. automodule:: hoelderMeans
+   :members:
+   :undoc-members:
+   :show-inheritance:

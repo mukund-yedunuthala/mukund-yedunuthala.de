@@ -1,0 +1,6 @@
+Entities
+========
+.. automodule:: entities
+   :members:
+   :undoc-members:
+   :show-inheritance:

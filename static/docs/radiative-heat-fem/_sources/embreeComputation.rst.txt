@@ -1,0 +1,22 @@
+Embree 
+======
+- Requires Embree library by Intel.
+- Requires cnpy.
+- Can be compiled using CMake. Relevant `CMakeLists.txt` is provided.
+- C++ 11 standard minimum required. 
+- Outputs `*.npz` archive in numpy binary archive format, which could
+be imported.
+
+**Psuedocode**:
+
+- Declare device, scene, geometry, vertex buffer, index buffer
+- Import coordinates, centroids.
+- For each element, pass vertices and indices 
+- Then commit geometry, attach geometry to scene.
+- Release geometry.
+- Commit scene for all.
+- Define ray
+- Loop over all elements twice, define ray origin and direction.
+- Define intersect, compare geometry and release scene, device.
+The above steps provide a quick summary. 
+   
