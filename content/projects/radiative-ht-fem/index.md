@@ -1,5 +1,5 @@
 +++
-title = "Modeling of radiative heat-exchange using Finite Element Method (FEM)"
+title = "Modeling of radiative heat-exchange using Finite Element Method"
 description = "A finite element method based solver for a mathematical model of heat-transfer comprised of a coupled system of conduction and radiation."
 date = 2022-10-15
 updated = 2026-04-07
@@ -11,6 +11,7 @@ tags = ["Python", "Academia"]
 [extra]
 local_image = "projects/radiative-ht-fem/img/Pasted image 20260407153658.png"
 social_media_card = "img/social_cards/projects_radiative_ht_fem.jpg"
+invertible_image = true
 +++
 
 A finite element method based solver for a mathematical model of heat-transfer comprised of a coupled system of conduction and radiation.
@@ -21,9 +22,9 @@ The energy transfer between two metallic bodies could be characterized by three 
 
 Conduction characterizes heat transferred through an exchange of energy between molecules in proximity without any movement of such subatomic particles. The medium of transfer thus influences the heat transfer directly. This is characterized by Fourier law of heat conduction. 
 $$
-\begin{equation}\label{eq:fl_cond}
-            q_x = -kA\frac{\partial T}{\partial x}
-        \end{equation}
+\begin{equation}
+  q_x = -kA\frac{\partial T}{\partial x}
+\end{equation}
 $$
 
 Thermal radiation, on the other hand, has been described as "a stream of electromagnetic radiation emitted by a material entity on account of its finite temperature." It is emitted from the surfaces of the bodies, and could either be absorbed or reflected on impacting another object. The difference between the amount of heat absorbed or reflected depends on external factors like the geometry or the orientation of these objects. The governing equation for this type of energy transfer is derived from the Stefan-Boltzmann Law which describes the maximum "flux" that can be emitted by radiation from a black surface. The quantity $\sigma$, known as Stefan-Boltzmann constant, has value $5.670367 \times 10^{-8} W m^{-2} K^{-4}$. Figure 1[^1] is a representative image of this phenomenon.
