@@ -3,6 +3,8 @@ title = "Impressum"
 path = "/de/imprint"
 date="2023-08-27"
 updated = 2024-04-29
+[extra]
+social_media_card = "img/social_cards/de_imprint.jpg"
 +++
 
 ## Angaben gemäß § 5 TMG sowie verantwortlich für Redaktion
@@ -31,4 +33,3 @@ Die Inhalte meiner Website wurden mit größter Sorgfalt erstellt. Für die Rich
 
 ### Haftung für Links
 Meine Website enthält Links zu externen Webseiten Dritter, auf deren Inhalte ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
-

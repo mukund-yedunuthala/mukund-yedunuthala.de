@@ -3,6 +3,8 @@ title = "Imprint"
 path = "imprint"
 date="2023-08-27"
 updated = 2024-04-29
+[extra]
+social_media_card = "img/social_cards/imprint.jpg"
 +++
 ## Information according to § 5 TMG and responsible for editing
 
