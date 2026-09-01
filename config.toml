@@ -1,6 +1,6 @@
 # The URL the site will be built for
 theme = "tabi"
-base_url = "https://www.mukundyedunuthala.page"
+base_url = "https://mukundyedunuthala.page"
 title = "Mukund Yedunuthala"
 description = "Computational Engineer | Numerical Modeling and High-Performance Computing (HPC) Expert"
 generate_feeds = false
@@ -91,7 +91,7 @@ allowed_domains = [
 ]
 
 bloglist_date = "both"
-email = "bXVrdW5keWVkdW51dGhhbGFAZ214LmRl"
+email = "mukundkashyapyn@outlook.com"
 encode_plaintext_email = true
 socials = [
     { name = "GitHub", url = "https://github.com/mukund-yedunuthala/", icon = "github" },
