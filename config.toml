@@ -13,7 +13,11 @@ build_search_index = true
 taxonomies = [{ name = "tags", feed = false }]
 
 [search]
-index_format = "elasticlunr_javascript"
+index_format = "elasticlunr_json"
+include_title = true
+include_description = true
+include_path = true
+include_content = true
 
 [markdown.highlighting]
 theme = "catppuccin-frappe"
@@ -35,7 +39,6 @@ language_name.en = "English"
 language_name.de = "Deutsch"
 base_canonical_url = "https://mukundyedunuthala.page"
 social_media_card = "img/social_cards/index.jpg"
-index_format = "elasticlunr_javascript"
 theme_switcher = true
 default_theme = "dark"
 skin = "blue"
@@ -48,8 +51,8 @@ show_remote_changes = true
 show_remote_source = true
 copy_button = true
 show_reading_time = false
-footnote_backlinks = true
 katex = true
+mermaid = false
 quick_navigation_buttons = true
 toc = true
 long_date_format = "%d %B %Y"
@@ -97,9 +100,11 @@ socials = [
     { name = "Pixelfed", url = "https://pixelfed.social/mukskashyap", icon = "pixelfed" },
     { name = "Mastodon", url = "https://convo.casa/@mukskashyap", icon = "mastodon" },
 ]
-FediverseCreator = { handle = "mukskashyap", domain = "convo.casa" }
+fediverse_creator = { handle = "mukskashyap", domain = "convo.casa" }
 copyright = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license."
 copyright_translations.de = "Copyright © $CURRENT_YEAR Mukund Yedunuthala $SEPARATOR Sofern nicht anders angegeben sind die Inhalte der Website unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de) lizenziert."
+
+
 [extra.analytics]
 service = ""
 id = ""
